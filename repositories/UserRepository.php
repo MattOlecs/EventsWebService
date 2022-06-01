@@ -5,15 +5,15 @@ require_once('../classes/DbConnection.php');
 class UserRepository {
 
     public static function getUserInfo($id) {
-        $query = "SELECT * FROM user WHERE _id = :id";
+        $queryString = "SELECT * FROM user WHERE _id = :id";
 
-        $stmt = DbConnection::getDatabaseInstance()
+        $query = DbConnection::getDatabaseInstance()
             ->getDatabaseAccess()
-            ->prepare($query);
+            ->prepare($queryString);
 
-        $stmt->bindParam(":id", $id);
-        $stmt->execute();
+        $query->bindParam(":id", $id);
+        $query->execute();
 
-        return $stmt->fetch(PDO::FETCH_ASSOC);
+        return $query->fetch(PDO::FETCH_ASSOC);
     }
 }

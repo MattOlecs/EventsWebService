@@ -1,5 +1,7 @@
 <?php
 
+require_once('../repositories/EventRepository.php');
+
 class MainPage extends AbstractPage{
     public function render() {
         $this->setTitle('Main');
@@ -11,8 +13,8 @@ class MainPage extends AbstractPage{
         // }
 
         RenderingService::render("MainPageTemplate.php", [
-            'user' => UserRepository::getUserInfo(1)
-            // 'cars' => RentalService::getCars()
+            'user' => UserRepository::getUserInfo(1),
+            'events' => EventRepository::getEvents()
         ]);
     }
 }
