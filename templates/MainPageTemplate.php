@@ -2,6 +2,7 @@
         <!-- Section-->
         <div class="text-center">
             <p class="lead">Dzień doberek: <?=$user['first_name'] . ' ' . $user['last_name']?> :)</p>
+            <?php echo 'PHP version: ' . phpversion();?>
         </div>
         <section class="py-5">
             <div class="container px-4 px-lg-5 mt-5">
