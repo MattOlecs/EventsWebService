@@ -30,7 +30,7 @@ class EventRepository {
 
     public static function insertEvent($values) {
         $name = $values['name'];
-        $date = '2022-05-31 18:00:00';
+        $timestamp =  $values['date'] . " " . $values['time'];
         $description = $values['description'];
 
         $queryString = 
@@ -42,7 +42,7 @@ class EventRepository {
             ->prepare($queryString);
 
         try {
-            $query->execute([null, $name, $date, $description, 1]);
+            $query->execute([null, $name, $timestamp, $description, 2]);
         } catch (PDOException $ex) {
             return $ex->getMessage();
         }
