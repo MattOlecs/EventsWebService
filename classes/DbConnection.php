@@ -21,6 +21,7 @@ class DbConnection {
                 $this->dbLogin,
                 $this->dbPassword);
             $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $this->db->setAttribute(PDO::ATTR_EMULATE_PREPARES, true);
         } catch (PDOException $e) {
             echo "Database connection failed: " . $e->getMessage();
         }

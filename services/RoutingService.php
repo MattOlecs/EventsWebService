@@ -1,8 +1,9 @@
 <?php
 
-require_once("../classes/AbstractPage.php");
-require_once("../classes/MainPage.php");
-require_once("../classes/ErrorPage.php");
+require_once("../classes/abstracts/AbstractPage.php");
+require_once("../classes/pages/MainPage.php");
+require_once("../classes/pages/ErrorPage.php");
+require_once("../classes/pages/AddEventPage.php");
 
 class RoutingService {
 
@@ -25,6 +26,9 @@ class RoutingService {
         switch ($routes[1]) {
             case "":
                 (new MainPage())->render();
+                break;
+            case "add-event":
+                (new AddEventPage())->render();
                 break;
             default:
                 (new ErrorPage())->render();
