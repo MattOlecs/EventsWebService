@@ -7,11 +7,11 @@ class AddEventPage extends AbstractPage {
     public function render() {
         $this->setTitle('Add event');
 
-        RenderingService::render("AddEventPageTemplate.php");
-    
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             $this->insertEvent($_POST);
         }
+
+        RenderingService::render("AddEventPageTemplate.php");
     }
 
     private function insertEvent($values){

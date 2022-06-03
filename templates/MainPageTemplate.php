@@ -11,7 +11,7 @@
                 <div class="col mb-5">
                     <div class="card h-100">
                         <!-- Product image-->
-                        <img class="card-img-top" src="http://rndimg.com/ImageStore/OilPaintingBlue/500x500_OilPaintingBlue_513a2e003a55426a8b7f74b6f15229dd.jpg" alt="..." />
+                        <img class="card-img-top" src="https://source.unsplash.com/random/600x500/?img=<?=$event['id']?>" alt="..." />
                         <!-- Product details-->
                         <div class="card-body p-4">
                             <div class="text-center">
@@ -29,5 +29,5 @@
                 </div>    
             <?php } ?>
         </div>
-    </div>a
+    </div>
 </section>
