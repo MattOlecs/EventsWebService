@@ -29,7 +29,6 @@ class EventRepository {
     }
 
     public static function insertEvent($values) {
-        
         $name = $values['name'];
         $date = '2022-05-31 18:00:00';
         $description = $values['description'];
@@ -44,6 +43,20 @@ class EventRepository {
 
         try {
             $query->execute([null, $name, $date, $description, 1]);
+        } catch (PDOException $ex) {
+            return $ex->getMessage();
+        }
+    }
+
+    public static function deleteEvent($id) {
+        $queryString = "DELETE FROM `event` WHERE `id` = $id;";
+
+        $query = DbConnection::getDatabaseInstance()
+            ->getDatabaseAccess()
+            ->prepare($queryString);
+
+        try {
+            $query->execute();
         } catch (PDOException $ex) {
             return $ex->getMessage();
         }

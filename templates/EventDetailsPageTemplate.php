@@ -1,10 +1,10 @@
 <section class="py-5">
-<script>
-if ( window.history.replaceState ) {
-        window.history.replaceState( null, null, window.location.href );
-    }
-</script>
         <div class="container px-4 px-lg-5 my-5">
+            <?php if ($isCreator) { ?>
+                <div class="row gx-4 gx-lg-5 align-items-right" style="width: 11vh;">
+                    <a class="btn btn-danger" href="/delete-event/<?= $event['id'] ?>">Delete event <i class="bi bi-calendar-x-fill"></i></a>
+                </div>
+            <?php } ?>
             <div class="row gx-4 gx-lg-5 align-items-center">
                 <div class="col-md-5"><img class="card-img-top mb-5 mb-md-0" src="https://source.unsplash.com/random/600x700/?img=1" alt="..." /></div>
                 <div class="col-md-4">
@@ -46,4 +46,9 @@ if ( window.history.replaceState ) {
                 <?php } ?>
             </div>
         </div>
+    <script>
+        if ( window.history.replaceState ) {
+                window.history.replaceState( null, null, window.location.href );
+            }
+    </script>
 </section>

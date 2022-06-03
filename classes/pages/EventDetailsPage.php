@@ -20,6 +20,7 @@ class EventDetailsPage extends AbstractPage{
         $creatorName = $creatorData['first_name'] . " " . $creatorData['last_name'];
         $registeredUsers = EventRepository::getNamesOfUsersRegisteredForEvent($this->eventId);
         $isRegistered = EventRepository::isUserRegisteredforEvent($this->eventId, 1);
+        $isCreator = $event['creator_user_id'] == 1;
 
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             if($isRegistered){
@@ -40,7 +41,8 @@ class EventDetailsPage extends AbstractPage{
                 'event' => $event,
                 'creator' => $creatorName,
                 'registeredUsers' => $registeredUsers,
-                'isRegistered' => $isRegistered
+                'isRegistered' => $isRegistered,
+                'isCreator' => $isCreator
             ]);
     }
 }

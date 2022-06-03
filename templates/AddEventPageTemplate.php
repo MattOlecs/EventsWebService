@@ -1,56 +1,32 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<div class="text-center">
+<section class="py-5">
     <form method="post">
-    <div class="form-group row">
-        <label class="col-4"></label> 
-        <div class="col-8">
-        <div class="input-group">
-            <div class="input-group-prepend">
-            <div class="input-group-text">
-                <i class="fa fa-address-card"></i>
+        <div class="container px-4 px-lg-5 " style="width: 70vh;">
+            <div class="row gx-4 gx-lg-5 px-4 p-2 align-items-center">
+                <label>Event name:</label>
+                <input id="name" name="name" type="text" placeholder="Name" class="form-control" required>
             </div>
-            </div> 
-            <input id="name" name="name" type="text" class="form-control">
-        </div>
-        </div>
-    </div>
-    <div class="form-group row">
-        <label class="col-4"></label> 
-        <div class="col-8">
-        <textarea id="description" name="description" cols="40" rows="5" class="form-control"></textarea>
-        </div>
-    </div>
-    <div class="form-group row">
-        <label class="col-4"></label> 
-        <div class="col-8">
-        <div class="input-group">
-            <div class="input-group-prepend">
-            <div class="input-group-text">
-                <i class="fa "></i>
+            <div class="row gx-4 gx-lg-5 px-4 p-2 align-items-center">
+                <label>Event description:</label>
+                <textarea id="description" name="description" placeholder="Description" cols="40" rows="5" class="form-control" required></textarea>
             </div>
-            </div> 
-            <input id="date" name="date" type="date" class="form-control">
-        </div>
-        </div>
-    </div>
-    <div class="form-group row">
-        <label class="col-4"></label> 
-        <div class="col-8">
-        <div class="input-group">
-            <div class="input-group-prepend">
-            <div class="input-group-text">
-                <i class="fa "></i>
+            <div class="row gx-4 gx-lg-5 px-4 p-2 align-items-center">
+                <label>Event date:</label>
+                <input id="date" name="date" type="date" class="form-control" required>
             </div>
-            </div> 
-            <input id="time" name="time" type="time" class="form-control">
+            <div class="row gx-4 gx-lg-5 px-4 p-2 align-items-center">
+                <label>Event time:</label>
+                <input id="time" name="time" type="time" class="form-control" required>
+            </div>
+            <div class="row gx-4 gx-lg-5 px-4 p-2 align-items-center">
+                <button name="submit" type="submit" class="btn btn-primary">Create event</button>
+            </div>
         </div>
-        </div>
-    </div> 
-    <div class="form-group row">
-        <div class="offset-4 col-8">
-        <button name="submit" type="submit" class="btn btn-primary">Submit</button>
-        </div>
-    </div>
     </form>
-</div>
+    <script>
+        if ( window.history.replaceState ) {
+                window.history.replaceState( null, null, window.location.href );
+            }
+    </script>
+</section>

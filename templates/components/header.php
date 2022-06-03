@@ -13,7 +13,7 @@
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="/styles/styles.css" rel="stylesheet" />
     </head>
-    <body>
+    <body class="d-flex flex-column min-vh-100">
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container px-4 px-lg-5">
