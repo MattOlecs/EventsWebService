@@ -10,21 +10,21 @@ class RenderingService {
 
     public static function render($contentFile, $variables = array()) {
 
-            $contentFileFullPath = "../templates/" . $contentFile;
+        $contentFileFullPath = "../templates/" . $contentFile;
 
-            if (count($variables) > 0) {
-                foreach ($variables as $key => $value) {
-                    if (strlen($key) > 0) {
-                        ${$key} = $value;
-                    }
-                }
-            }
-
-            foreach (self::$injection as $key => $value) {
+        if (count($variables) > 0) {
+            foreach ($variables as $key => $value) {
                 if (strlen($key) > 0) {
                     ${$key} = $value;
                 }
             }
+        }
+
+        foreach (self::$injection as $key => $value) {
+            if (strlen($key) > 0) {
+                ${$key} = $value;
+            }
+        }
 
         require_once("../templates/components/header.php");
 

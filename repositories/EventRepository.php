@@ -16,6 +16,18 @@ class EventRepository {
         return $query->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    public static function getEvent($id) {
+        $queryString = "SELECT * FROM `event` WHERE `id` = $id";
+
+        $query = DbConnection::getDatabaseInstance()
+            ->getDatabaseAccess()
+            ->prepare($queryString);
+
+        $query->execute();
+
+        return $query->fetch(PDO::FETCH_ASSOC);
+    }
+
     public static function insertEvent($values) {
         
         $name = $values['name'];
