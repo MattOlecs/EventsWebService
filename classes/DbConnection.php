@@ -4,7 +4,7 @@ class DbConnection {
     private static $dbInstance;
     private $db;
     private $dbLogin = 'root';
-    private $dbPassword = '1111';
+    private $dbPassword = 'Windows2021!';
 
     public static function getDatabaseInstance() {
         if(is_null(DbConnection::$dbInstance)) {
@@ -17,7 +17,7 @@ class DbConnection {
     private function __construct() {
         try {
             $this->db = new PDO(
-                'mysql:host=localhost;dbname=event',
+                'mysql:host=localhost;dbname=events',
                 $this->dbLogin,
                 $this->dbPassword);
             $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

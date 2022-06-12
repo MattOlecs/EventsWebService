@@ -4,8 +4,10 @@ require_once("../classes/abstracts/AbstractPage.php");
 require_once("../classes/pages/MainPage.php");
 require_once("../classes/pages/ErrorPage.php");
 require_once("../classes/pages/AddEventPage.php");
-require_once("../classes/pages/DeleteEventPage.php");
-require_once("../classes/pages/EventDetailsPage.php");
+require_once("../classes/pages/RegisterPage.php");
+require_once("../classes/pages/SignInPage.php");
+require_once("../classes/pages/LogoutPage.php");
+
 
 class RoutingService {
 
@@ -32,12 +34,15 @@ class RoutingService {
             case "add-event":
                 (new AddEventPage())->render();
                 break;
-            case "delete-event":
-                (new DeleteEventPage($routes[2]))->render();
+            case "register":
+                (new RegisterPage())->render();
                 break;
-            case "event-details":
-                (new EventDetailsPage($routes[2]))->render();
-                break;  
+            case "signin":
+                (new SignInPage())->render();
+                break;
+            case "logout":
+                (new LogoutPage())->render();
+                break;
             default:
                 (new ErrorPage())->render();
         }
