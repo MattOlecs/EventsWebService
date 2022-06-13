@@ -8,12 +8,12 @@ class MainPage extends AbstractPage{
 
         $user = '';
 
-        // if($this->getLoginInfo() != 0 ){
-        //     $user = User::getUserInfo($this->getLoginInfo());
-        // }
+        if ($this->getLoginInfo() != 0) {
+            $user = UserRepository::getUser($this->getLoginInfo());
+        }
 
         RenderingService::render("MainPageTemplate.php", [
-            'user' => UserRepository::getUserInfo(1),
+            'user' => $user,
             'events' => EventRepository::getEvents()
         ]);
     }

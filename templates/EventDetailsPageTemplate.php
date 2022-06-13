@@ -37,7 +37,7 @@
                 <?php if (Count($registeredUsers) > 0) { ?>
                     <ul class="list-group">
                         <?php foreach ($registeredUsers as $user) { ?>
-                            <li class="list-group-item"><?= $user['full_name'] ?></li>
+                            <li class="list-group-item"><?= $user['login'] ?></li>
                         <?php } ?>
                     </ul>
                 </div>

@@ -25,7 +25,8 @@ class RenderingService {
                 ${$key} = $value;
             }
         }
-
+        
+        require_once("../templates/components/navigation.php");
         require_once("../templates/components/header.php");
 
         echo "\n<div class=\"container\">\n";
