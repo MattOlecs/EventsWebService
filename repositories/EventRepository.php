@@ -64,8 +64,8 @@ class EventRepository {
 
     public static function isUserRegisteredforEvent($eventId, $userId){
         $queryString = 
-            "SELECT 1 FROM `eventmembers` 
-            WHERE `event_id` = $eventId && `user_id` = $userId";
+            "SELECT 1 FROM `event_members` 
+            WHERE `id_event` = $eventId && `id_user` = $userId";
 
         $query = DbConnection::getDatabaseInstance()
             ->getDatabaseAccess()
@@ -80,8 +80,8 @@ class EventRepository {
 
     public static function registerUserForEvent($eventId, $userId){
         $queryString = 
-            "INSERT INTO `eventmembers`
-            (`event_id`,`user_id`) VALUES (?,?);";
+            "INSERT INTO `event_members`
+            (`id_event`,`id_user`) VALUES (?,?);";
 
         $query = DbConnection::getDatabaseInstance()
             ->getDatabaseAccess()
@@ -96,8 +96,8 @@ class EventRepository {
 
     public static function unregisterUserFromEvent($eventId, $userId){
         $queryString = 
-            "DELETE FROM `eventmembers`
-            WHERE `event_id` = $eventId && `user_id` = $userId;";
+            "DELETE FROM `event_members`
+            WHERE `id_event` = $eventId && `id_user` = $userId;";
 
         $query = DbConnection::getDatabaseInstance()
             ->getDatabaseAccess()
@@ -113,8 +113,8 @@ class EventRepository {
     public static function getNamesOfUsersRegisteredForEvent($eventId){
         $queryString = 
             "SELECT `login` FROM `user` 
-            INNER JOIN (SELECT * FROM `eventmembers` WHERE `event_id` = $eventId) members 
-            ON user_id = id;";
+            INNER JOIN (SELECT * FROM `event_members` WHERE `id_event` = $eventId) members 
+            ON id_user = id;";
 
         $query = DbConnection::getDatabaseInstance()
             ->getDatabaseAccess()

@@ -2,7 +2,7 @@
 
 require_once('../classes/DbConnection.php');
 
-class SignInPage extends AbstractPage
+class LoginPage extends AbstractPage
 {
 
     private $defaults = [
@@ -36,7 +36,7 @@ class SignInPage extends AbstractPage
             }
         }
 
-        RenderingService::render("SignInPageTemplate.php", [
+        RenderingService::render("LoginPageTemplate.php", [
             'errors' => $errors,
             'values' => $this->values,
             'success' => $success

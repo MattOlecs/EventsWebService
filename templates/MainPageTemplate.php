@@ -17,7 +17,7 @@
                         <div class="card-body p-4">
                             <div class="text-center">
                                 <!-- Product name-->
-                                <h5 class="fw-bolder"><?= $event['name'] ?></h5>
+                                <h5 class="fw-bolder"><?= $event['title'] ?></h5>
                                 <!-- Product price-->
                                 <?= $event['description'] ?>
                             </div>
