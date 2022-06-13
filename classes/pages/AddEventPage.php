@@ -22,6 +22,6 @@ class AddEventPage extends AbstractPage {
     }
 
     private function insertEvent($values){
-        EventRepository::insertEvent($values);
+        EventRepository::insertEvent($values, $this->getLoginInfo());
     }
 }

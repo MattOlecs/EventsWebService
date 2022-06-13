@@ -28,13 +28,13 @@ class EventRepository {
         return $query->fetch(PDO::FETCH_ASSOC);
     }
 
-    public static function insertEvent($values) {
+    public static function insertEvent($values, $userId) {
         $name = $values['name'];
         $timestamp =  $values['date'] . " " . $values['time'];
         $description = $values['description'];
 
         $queryString = 
-            "INSERT INTO `event`.`event`
+            "INSERT INTO `events`.`event`
             (`id`,`name`,`date`,`description`,`creator_user_id`) VALUES (?,?,?,?,?);";
 
         $query = DbConnection::getDatabaseInstance()
@@ -42,7 +42,7 @@ class EventRepository {
             ->prepare($queryString);
 
         try {
-            $query->execute([null, $name, $timestamp, $description, 2]);
+            $query->execute([null, $name, $timestamp, $description, $userId]);
         } catch (PDOException $ex) {
             return $ex->getMessage();
         }
@@ -112,9 +112,9 @@ class EventRepository {
 
     public static function getNamesOfUsersRegisteredForEvent($eventId){
         $queryString = 
-            "SELECT CONCAT(`first_name`, ' ', `last_name`) AS full_name FROM `user` 
+            "SELECT `login` FROM `user` 
             INNER JOIN (SELECT * FROM `eventmembers` WHERE `event_id` = $eventId) members 
-            ON user_id = _id;";
+            ON user_id = id;";
 
         $query = DbConnection::getDatabaseInstance()
             ->getDatabaseAccess()

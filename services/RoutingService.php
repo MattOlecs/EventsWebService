@@ -6,10 +6,15 @@ require_once("../classes/pages/ErrorPage.php");
 require_once("../classes/pages/AddEventPage.php");
 require_once("../classes/pages/DeleteEventPage.php");
 require_once("../classes/pages/EventDetailsPage.php");
+require_once("../classes/pages/RegisterPage.php");
+require_once("../classes/pages/SignInPage.php");
+require_once("../classes/pages/LogoutPage.php");
 
-class RoutingService {
+class RoutingService
+{
 
-    private static function getCurrentUri() {
+    private static function getCurrentUri()
+    {
         $basepath = implode('/', array_slice(explode('/', $_SERVER['SCRIPT_NAME']), 0, -1)) . '/';
         $uri = substr($_SERVER['REQUEST_URI'], strlen($basepath));
         if (strstr($uri, '?')) $uri = substr($uri, 0, strpos($uri, '?'));
@@ -17,11 +22,12 @@ class RoutingService {
         return $uri;
     }
 
-    public static function route() {
+    public static function route()
+    {
         $base_url = self::getCurrentUri();
         $routes = explode('/', $base_url);
-        foreach($routes as $route) {
-            if(!empty(trim($route)))
+        foreach ($routes as $route) {
+            if (!empty(trim($route)))
                 array_push($routes, $route);
         }
 
@@ -37,7 +43,16 @@ class RoutingService {
                 break;
             case "event-details":
                 (new EventDetailsPage($routes[2]))->render();
-                break;  
+                break;
+            case "register":
+                (new RegisterPage())->render();
+                break;
+            case "signin":
+                (new SignInPage())->render();
+                break;
+            case "logout":
+                (new LogoutPage())->render();
+                break;
             default:
                 (new ErrorPage())->render();
         }
