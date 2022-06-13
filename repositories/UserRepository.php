@@ -17,6 +17,18 @@ class UserRepository {
         return $query->fetch(PDO::FETCH_ASSOC);
     }
 
+    public static function getUsers() {
+        $queryString = "SELECT * FROM `user`";
+
+        $query = DbConnection::getDatabaseInstance()
+            ->getDatabaseAccess()
+            ->prepare($queryString);
+
+        $query->execute();
+
+        return $query->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     public static function insertUser($userArray)
     {
         $login= $userArray['login'];
@@ -75,5 +87,24 @@ class UserRepository {
             return $password == $user['password'] ? $user['login'] : false;
         }
         return false;
+    }
+    
+    public static function userIsAdmin($id)
+    {
+        $queryString = "SELECT is_admin FROM user WHERE id = :id";
+        $db = DbConnection::getDatabaseInstance()
+            ->getDatabaseAccess();
+        $query = $db->prepare($queryString);
+
+        $query->bindParam(":id", $id);
+        $query->execute();
+
+        if ($query->rowCount() > 0) {
+            $row = $query->fetch();
+            if ($row['is_admin'] == 1) {
+                return true;
+            }
+        } else
+            return false;
     }
 }

@@ -16,11 +16,11 @@ class EventDetailsPage extends AbstractPage{
         $this->setTitle('Details');
         
         $event = EventRepository::getEvent($this->eventId);
-        $creatorData = UserRepository::getUser($event['creator_user_id']);
+        $creatorData = UserRepository::getUser($event['id_owner']);
         $creatorName = $creatorData['login'];
         $registeredUsers = EventRepository::getNamesOfUsersRegisteredForEvent($this->eventId);
         $isRegistered = EventRepository::isUserRegisteredforEvent($this->eventId, $this->getLoginInfo());
-        $isCreator = $event['creator_user_id'] == $this->getLoginInfo();
+        $isCreator = $event['id_owner'] == $this->getLoginInfo();
 
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             if($isRegistered){

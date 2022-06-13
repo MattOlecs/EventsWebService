@@ -9,7 +9,7 @@
                 <div class="col-md-5"><img class="card-img-top mb-5 mb-md-0" src="https://source.unsplash.com/random/600x700/?img=1" alt="..." /></div>
                 <div class="col-md-4">
                     <div class="small mb-1">Organizer: <?= $creator ?></div>
-                    <h1 class="display-5 fw-bolder"><?= $event['name'] ?></h1>
+                    <h1 class="display-5 fw-bolder"><?= $event['title'] ?></h1>
                     <div class="fs-5 mb-5">
                         <span><?= $event['date'] ?></span>
                     </div>

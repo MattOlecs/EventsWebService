@@ -19,38 +19,38 @@
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container px-4 px-lg-5">
-            <a class="navbar-brand" href="#!">Start Bootstrap</a>
+            <a class="navbar-brand" href="/">Events Web Service</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#!">All Products</a></li>
-                            <li>
-                                <hr class="dropdown-divider" />
-                            </li>
-                            <li><a class="dropdown-item" href="#!">Popular Items</a></li>
-                            <li><a class="dropdown-item" href="#!">New Arrivals</a></li>
-                        </ul>
-                    </li>
-                </ul>
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4"></ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <?php if ($loginInfo == 0) { ?>
+                    <?php if ($loginInfo == 0) {
+                    ?>
                         <li><a id="register-link" href="/register">
                                 <button style="margin-top: -7px; margin-bottom: -7px; margin-right: 5px;" class="btn btn-secondary">Register</button></a></li>
-                        <li><a id="signin-link" href="/signin">
+                        <li><a id="signin-link" href="/login">
                                 <button style="margin-top: -7px; margin-bottom: -7px;" class="btn btn-secondary">Signin</button></a></li>
                         </a></li>
-                    <?php } else { ?>
-                        <li><a id="register-link" href="/add-event">
+                    <?php
+                    } else {
+                    ?>
+                        <?php
+                        if ($_SESSION['isAdmin']) {
+                        ?>
+                            <li><a id="admin-panel-link" href="/admin-panel">
+                                    <button style="margin-top: -7px; margin-bottom: -7px; margin-right: 5px; margin-left: 5px;" class="btn btn-secondary">Admin panel</button>
+                                </a></li>
+                        <?php
+                        }
+                        ?>
+                        <li><a id="add-event-link" href="/add-event">
                                 <button style="margin-top: -7px; margin-bottom: -7px; margin-right: 5px;" class="btn btn-secondary">Add event</button></a></li>
                         <li><a id="signin-link" href="/logout">
                                 <button style="margin-top: -7px; margin-bottom: -7px;" class="btn btn-secondary">Logout</button></a></li>
                         </a></li>
-                    <?php } ?>
+                    <?php
+                    }
+                    ?>
                 </ul>
             </div>
         </div>

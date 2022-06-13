@@ -7,8 +7,9 @@ require_once("../classes/pages/AddEventPage.php");
 require_once("../classes/pages/DeleteEventPage.php");
 require_once("../classes/pages/EventDetailsPage.php");
 require_once("../classes/pages/RegisterPage.php");
-require_once("../classes/pages/SignInPage.php");
+require_once("../classes/pages/LoginPage.php");
 require_once("../classes/pages/LogoutPage.php");
+require_once("../classes/pages/AdminPanelPage.php");
 
 class RoutingService
 {
@@ -47,11 +48,14 @@ class RoutingService
             case "register":
                 (new RegisterPage())->render();
                 break;
-            case "signin":
-                (new SignInPage())->render();
+            case "login":
+                (new LoginPage())->render();
                 break;
             case "logout":
                 (new LogoutPage())->render();
+                break;
+            case "admin-panel":
+                (new AdminPanelPage())->render();
                 break;
             default:
                 (new ErrorPage())->render();
