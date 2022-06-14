@@ -15,7 +15,7 @@ class DeleteEventPage extends AbstractPage {
     public function render() {
         $this->setTitle('Delete event');
 
-        $eventName = EventRepository::getEvent($this->eventId)['name'];
+        $eventTitle = EventRepository::getEvent($this->eventId)['title'];
         $isDeleted = false;
 
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
@@ -28,7 +28,7 @@ class DeleteEventPage extends AbstractPage {
         RenderingService::render(
             "DeleteEventPageTemplate.php",
             [
-                'eventName' => $eventName,
+                'eventName' => $eventTitle,
                 'isDeleted' => $isDeleted
             ]);
     }

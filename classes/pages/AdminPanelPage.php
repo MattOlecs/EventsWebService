@@ -15,6 +15,7 @@ class AdminPanelPage extends AbstractPage{
         RenderingService::render("AdminPanelPageTemplate.php", [
             'user' => $user,
             'users' => UserRepository::getUsers(),
+            'usersRegisteredToday' => UserRepository::getUsersRegisteredToday(),
             'isAdmin' => UserRepository::userIsAdmin($this->getLoginInfo())
         ]);
     }
