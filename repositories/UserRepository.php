@@ -36,8 +36,8 @@ class UserRepository {
         $password = $userArray['password'];
         //password_hash($userArray['password'], PASSWORD_DEFAULT);
         $queryString = 
-        "INSERT INTO `events`.`user`
-        (`id`,`login`,`email`,`password`,`is_admin`,`is_active`,`allow_notifications`) VALUES (?,?,?,?,?,?,?);";
+        "INSERT INTO `user`
+        (`id`, `login`, `email`, `password`, `is_admin`, `is_active`, `allow_notifications`, `name`, `surname`, `username`, `register_date`) VALUES (?,?,?,?,?,?,?,?,?,?,NOW());";
 
         $db = DbConnection::getDatabaseInstance()
             ->getDatabaseAccess();
@@ -45,7 +45,7 @@ class UserRepository {
         
         try {
             $db->beginTransaction();
-            $query->execute([null, $login, $email, $password, 0, 1, 1]);
+            $query->execute([null, $login, $email, $password, 0, 1, 1, '', '', '']);
             $id = $db->lastInsertId();
             $db->commit();
         } catch (PDOException $ex) {
@@ -106,5 +106,19 @@ class UserRepository {
             }
         } else
             return false;
+    }
+
+    public static function getUsersRegisteredToday()
+    {
+        $queryString =
+            "SELECT * FROM `user` WHERE register_date = CURDATE();";
+
+        $query = DbConnection::getDatabaseInstance()
+            ->getDatabaseAccess()
+            ->prepare($queryString);
+
+        $query->execute();
+
+        return $query->fetchAll(PDO::FETCH_ASSOC);
     }
 }

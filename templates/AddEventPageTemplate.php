@@ -5,12 +5,12 @@
         <div class="container px-4 px-lg-5 " style="width: 70vh;">
             <?php if (!$isCreated) { ?>
                 <!-- Name input -->
-                <label>Event name:</label>
+                <label>Event title:</label>
                 <div class="row gx-4 gx-lg-5 px-4 p-2 align-items-start">
-                    <input id="name" name="name" type="text" placeholder="Name" class="form-control" required>
+                    <input id="name" name="title" type="text" placeholder="Title" class="form-control" required>
                 </div>
                 <!-- Description input -->
-                <label>Event name:</label>
+                <label>Event description:</label>
                 <div class="row gx-4 gx-lg-5 px-4 p-2 align-items-center">
                     <textarea id="description" name="description" placeholder="Description" cols="40" rows="5" class="form-control" required></textarea>
                 </div>
