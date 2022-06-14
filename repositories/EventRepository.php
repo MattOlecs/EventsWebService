@@ -2,9 +2,11 @@
 
 require_once('../classes/DbConnection.php');
 
-class EventRepository {
+class EventRepository
+{
 
-    public static function getEvents() {
+    public static function getEvents()
+    {
         $queryString = "SELECT * FROM `event`";
 
         $query = DbConnection::getDatabaseInstance()
@@ -16,7 +18,8 @@ class EventRepository {
         return $query->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public static function getEvent($id) {
+    public static function getEvent($id)
+    {
         $queryString = "SELECT * FROM `event` WHERE `id` = $id";
 
         $query = DbConnection::getDatabaseInstance()
@@ -28,27 +31,29 @@ class EventRepository {
         return $query->fetch(PDO::FETCH_ASSOC);
     }
 
-    public static function insertEvent($values, $userId) {
-        $name = $values['name'];
+    public static function insertEvent($values, $userId)
+    {
+        $title = $values['title'];
         $timestamp =  $values['date'] . " " . $values['time'];
         $description = $values['description'];
 
-        $queryString = 
-            "INSERT INTO `events`.`event`
-            (`id`,`name`,`date`,`description`,`creator_user_id`) VALUES (?,?,?,?,?);";
+        $queryString =
+            "INSERT INTO `event`
+            (`id`, `id_owner`, `title`, `description`, `date`, `create_date`) VALUES (?,?,?,?,?,NOW());";
 
         $query = DbConnection::getDatabaseInstance()
             ->getDatabaseAccess()
             ->prepare($queryString);
 
         try {
-            $query->execute([null, $name, $timestamp, $description, $userId]);
+            $query->execute([null, $userId, $title, $description, $timestamp]);
         } catch (PDOException $ex) {
             return $ex->getMessage();
         }
     }
 
-    public static function deleteEvent($id) {
+    public static function deleteEvent($id)
+    {
         $queryString = "DELETE FROM `event` WHERE `id` = $id;";
 
         $query = DbConnection::getDatabaseInstance()
@@ -62,8 +67,9 @@ class EventRepository {
         }
     }
 
-    public static function isUserRegisteredforEvent($eventId, $userId){
-        $queryString = 
+    public static function isUserRegisteredforEvent($eventId, $userId)
+    {
+        $queryString =
             "SELECT 1 FROM `event_members` 
             WHERE `id_event` = $eventId && `id_user` = $userId";
 
@@ -78,8 +84,9 @@ class EventRepository {
         return count($queryResult) > 0;
     }
 
-    public static function registerUserForEvent($eventId, $userId){
-        $queryString = 
+    public static function registerUserForEvent($eventId, $userId)
+    {
+        $queryString =
             "INSERT INTO `event_members`
             (`id_event`,`id_user`) VALUES (?,?);";
 
@@ -94,8 +101,9 @@ class EventRepository {
         }
     }
 
-    public static function unregisterUserFromEvent($eventId, $userId){
-        $queryString = 
+    public static function unregisterUserFromEvent($eventId, $userId)
+    {
+        $queryString =
             "DELETE FROM `event_members`
             WHERE `id_event` = $eventId && `id_user` = $userId;";
 
@@ -110,8 +118,9 @@ class EventRepository {
         }
     }
 
-    public static function getNamesOfUsersRegisteredForEvent($eventId){
-        $queryString = 
+    public static function getNamesOfUsersRegisteredForEvent($eventId)
+    {
+        $queryString =
             "SELECT `login` FROM `user` 
             INNER JOIN (SELECT * FROM `event_members` WHERE `id_event` = $eventId) members 
             ON id_user = id;";
