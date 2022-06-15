@@ -88,7 +88,7 @@ class EventRepository
     {
         $queryString =
             "INSERT INTO `event_members`
-            (`id_event`,`id_user`) VALUES (?,?);";
+            (`id_event`,`id_user`, `join_date`) VALUES (?,?,NOW());";
 
         $query = DbConnection::getDatabaseInstance()
             ->getDatabaseAccess()
@@ -132,5 +132,61 @@ class EventRepository
         $query->execute();
 
         return $query->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public static function getEventsCreated()
+    {
+        $queryString =
+            "SELECT count(*) as events_created FROM `event`";
+
+        $query = DbConnection::getDatabaseInstance()
+            ->getDatabaseAccess()
+            ->prepare($queryString);
+
+        $query->execute();
+
+        return $query->fetch(PDO::FETCH_COLUMN);
+    }
+
+    public static function getEventsCreatedToday()
+    {
+        $queryString =
+            "SELECT count(*) as events_created_today FROM `event` WHERE create_date = CURDATE();";
+
+        $query = DbConnection::getDatabaseInstance()
+            ->getDatabaseAccess()
+            ->prepare($queryString);
+
+        $query->execute();
+
+        return $query->fetch(PDO::FETCH_COLUMN);
+    }
+
+    public static function getEventsJoined()
+    {
+        $queryString =
+            "SELECT count(*) as events_joined_today FROM `event_members`";
+
+        $query = DbConnection::getDatabaseInstance()
+            ->getDatabaseAccess()
+            ->prepare($queryString);
+
+        $query->execute();
+
+        return $query->fetch(PDO::FETCH_COLUMN);
+    }
+
+    public static function getEventsJoinedToday()
+    {
+        $queryString =
+            "SELECT count(*) as events_joined_today FROM `event_members` WHERE join_date = CURDATE();";
+
+        $query = DbConnection::getDatabaseInstance()
+            ->getDatabaseAccess()
+            ->prepare($queryString);
+
+        $query->execute();
+
+        return $query->fetch(PDO::FETCH_COLUMN);
     }
 }
