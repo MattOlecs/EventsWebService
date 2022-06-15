@@ -12,7 +12,7 @@
     <!-- Bootstrap icons-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
     <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="/styles/styles.css" rel="stylesheet" />
+    <link href="/styles/style.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
     <link href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" />
     <link href="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js" />
@@ -31,9 +31,9 @@
                     <?php if ($loginInfo == 0) {
                     ?>
                         <li><a id="register-link" href="/register">
-                                <button style="margin-top: -7px; margin-bottom: -7px; margin-right: 5px;" class="btn btn-secondary">Register</button></a></li>
+                                <button style="margin-top: -7px; margin-bottom: -7px; margin-right: 5px;" class="btn btn-secondary bg-primary">Register</button></a></li>
                         <li><a id="signin-link" href="/login">
-                                <button style="margin-top: -7px; margin-bottom: -7px;" class="btn btn-secondary">Signin</button></a></li>
+                                <button style="margin-top: -7px; margin-bottom: -7px;" class="btn btn-secondary bg-primary">Login</button></a></li>
                         </a></li>
                     <?php
                     } else {
@@ -42,15 +42,15 @@
                         if ($_SESSION['isAdmin']) {
                         ?>
                             <li><a id="admin-panel-link" href="/admin-panel">
-                                    <button style="margin-top: -7px; margin-bottom: -7px; margin-right: 5px; margin-left: 5px;" class="btn btn-secondary">Admin panel</button>
+                                    <button style="margin-top: -7px; margin-bottom: -7px; margin-right: 5px; margin-left: 5px;" class="btn btn-secondary bg-primary">Admin panel</button>
                                 </a></li>
                         <?php
                         }
                         ?>
                         <li><a id="add-event-link" href="/add-event">
-                                <button style="margin-top: -7px; margin-bottom: -7px; margin-right: 5px;" class="btn btn-secondary">Add event</button></a></li>
+                                <button style="margin-top: -7px; margin-bottom: -7px; margin-right: 5px;" class="btn btn-secondary bg-primary">Add event</button></a></li>
                         <li><a id="signin-link" href="/logout">
-                                <button style="margin-top: -7px; margin-bottom: -7px;" class="btn btn-secondary">Logout</button></a></li>
+                                <button style="margin-top: -7px; margin-bottom: -7px;" class="btn btn-secondary bg-primary">Logout</button></a></li>
                         </a></li>
                     <?php
                     }

@@ -6,10 +6,12 @@ class UtilsRepository
     {
         $_SESSION['id'] = $id;
         $_SESSION['isAdmin'] = UserRepository::userIsAdmin($id);
+        UserRepository::logLogin();
     }
 
     public static function logout()
     {
+        UserRepository::logLogout();
         session_unset();
         session_destroy();
     }
