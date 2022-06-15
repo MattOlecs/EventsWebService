@@ -35,6 +35,7 @@
                         <li><a id="signin-link" href="/login">
                                 <button style="margin-top: -7px; margin-bottom: -7px;" class="btn btn-secondary bg-primary">Login</button></a></li>
                         </a></li>
+
                     <?php
                     } else {
                     ?>
@@ -48,9 +49,14 @@
                         }
                         ?>
                         <li><a id="add-event-link" href="/add-event">
+                                <button style="margin-top: -7px; margin-bottom: -7px; margin-right: 5px;" class="btn btn-secondary">Add event</button></a></li>
+                        <li><a id="logout-link" href="/logout">
+                                <button style="margin-top: -7px; margin-bottom: -7px;" class="btn btn-secondary">Logout</button></a></li>
                                 <button style="margin-top: -7px; margin-bottom: -7px; margin-right: 5px;" class="btn btn-secondary bg-primary">Add event</button></a></li>
                         <li><a id="signin-link" href="/logout">
                                 <button style="margin-top: -7px; margin-bottom: -7px;" class="btn btn-secondary bg-primary">Logout</button></a></li>
+                        <li><a id="edit-profile-link" href="/edit-profile">
+                                <button style="margin-top: -7px; margin-bottom: -7px; margin-right: 5px;" class="btn btn-secondary">Edit profile</button></a></li>
                         </a></li>
                     <?php
                     }

@@ -10,6 +10,7 @@ require_once("../classes/pages/RegisterPage.php");
 require_once("../classes/pages/LoginPage.php");
 require_once("../classes/pages/LogoutPage.php");
 require_once("../classes/pages/AdminPanelPage.php");
+require_once("../classes/pages/EditProfilePage.php");
 
 class RoutingService
 {
@@ -56,6 +57,9 @@ class RoutingService
                 break;
             case "admin-panel":
                 (new AdminPanelPage())->render();
+                break;
+            case "edit-profile":
+                (new EditProfilePage())->render();
                 break;
             default:
                 (new ErrorPage())->render();
