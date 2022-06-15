@@ -32,9 +32,11 @@
                     ?>
                         <li><a id="register-link" href="/register">
                                 <button style="margin-top: -7px; margin-bottom: -7px; margin-right: 5px;" class="btn btn-secondary">Register</button></a></li>
+
                         <li><a id="signin-link" href="/login">
                                 <button style="margin-top: -7px; margin-bottom: -7px;" class="btn btn-secondary">Signin</button></a></li>
                         </a></li>
+
                     <?php
                     } else {
                     ?>
@@ -49,7 +51,9 @@
                         ?>
                         <li><a id="add-event-link" href="/add-event">
                                 <button style="margin-top: -7px; margin-bottom: -7px; margin-right: 5px;" class="btn btn-secondary">Add event</button></a></li>
-                        <li><a id="signin-link" href="/logout">
+                        <li><a id="edit-profile-link" href="/edit-profile">
+                                <button style="margin-top: -7px; margin-bottom: -7px; margin-right: 5px;" class="btn btn-secondary">Edit profile</button></a></li>
+                        <li><a id="logout-link" href="/logout">
                                 <button style="margin-top: -7px; margin-bottom: -7px;" class="btn btn-secondary">Logout</button></a></li>
                         </a></li>
                     <?php

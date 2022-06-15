@@ -14,7 +14,7 @@ class LoginPage extends AbstractPage
     private $values = array();
 
     public function render() {
-        $this->setTitle('SignIn');
+        $this->setTitle('Login');
         $errors = array();
         $success = "";
 

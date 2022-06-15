@@ -37,7 +37,7 @@ class UserRepository {
         //password_hash($userArray['password'], PASSWORD_DEFAULT);
         $queryString = 
         "INSERT INTO `user`
-        (`id`, `login`, `email`, `password`, `is_admin`, `is_active`, `allow_notifications`, `name`, `surname`, `username`, `register_date`) VALUES (?,?,?,?,?,?,?,?,?,?,NOW());";
+        (`id`, `login`, `email`, `password`, `is_admin`, `is_active`, `allow_notifications`, `first_name`, `last_name`, `username`, `register_date`) VALUES (?,?,?,?,?,?,?,?,?,?, NOW());";
 
         $db = DbConnection::getDatabaseInstance()
             ->getDatabaseAccess();
@@ -45,7 +45,7 @@ class UserRepository {
         
         try {
             $db->beginTransaction();
-            $query->execute([null, $login, $email, $password, 0, 1, 1, '', '', '']);
+            $query->execute([null, $login, $email, $password, 0, 1, 1, '', '', $login]);
             $id = $db->lastInsertId();
             $db->commit();
         } catch (PDOException $ex) {
@@ -120,5 +120,42 @@ class UserRepository {
         $query->execute();
 
         return $query->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public static function updateUser($id, $userArray)
+        {
+            $candidate_fields = ['first_name', 'last_name', 'email', 'username', 'password', 'is_admin', 'is_active', 'allow_notifications'];
+            $fields = array();
+            $queryString = "UPDATE user SET ";
+
+            foreach($candidate_fields as $field){
+                if(isset($userArray[$field])){
+                    $queryString = $queryString . $field . "=:$field, ";
+                    if(strlen($userArray[$field]) ==1){
+                        $fields[$field] = (int)$userArray[$field];
+                    } 
+                    else{
+                        $fields[$field] = $userArray[$field];
+                    }
+                } 
+            }
+            $queryString = substr_replace($queryString ,"", -2);
+            $queryString = $queryString . ' WHERE id='. $id;
+
+            $db = DbConnection::getDatabaseInstance()
+            ->getDatabaseAccess();
+            $query = $db->prepare($queryString);
+            //return var_dump($fields);
+         
+            try {
+                $db->beginTransaction();
+                $query->execute($fields);
+                $lastId = $db->lastInsertId();
+                $db->commit();
+            } catch (PDOException $ex) {
+                $db->rollBack();
+                return $ex->getMessage();
+            }
+            return $lastId;
     }
 }
