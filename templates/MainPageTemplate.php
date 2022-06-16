@@ -24,11 +24,29 @@
                         </div>
                         <!-- Product actions-->
                         <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="/event-details/<?= $event['id'] ?>">Details</a></div>
+                            <div class="text-center">
+                                <a class="btn btn-outline-dark mt-auto" href="/event-details/<?= $event['id'] ?>">Details</a>
+                                <?php if($loginInfo != 0) {?>
+                                    <form method="post">
+                                        <button class="btn btn-outline-dark mt-auto" type="submit" name="event_id" value=<?= $event['id'] ?>>
+                                            <?php if(in_array($event['id'], array_values($favouriteEvents))) {?>
+                                                <i class="bi bi-x-circle-fill"></i>
+                                            <?php } else {?>
+                                                <i class="bi bi-heart-fill"></i>
+                                            <?php }?>
+                                        </button>
+                                    <form>
+                                <?php }?>
+                            </div>
                         </div>
                     </div>
                 </div>
             <?php } ?>
         </div>
     </div>
+    <script>
+        if ( window.history.replaceState ) {
+                window.history.replaceState( null, null, window.location.href );
+            }
+    </script>
 </section>

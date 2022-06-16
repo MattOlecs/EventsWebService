@@ -1,7 +1,9 @@
 <?php
-
 require_once("../classes/abstracts/AbstractPage.php");
+require_once("../classes/pages/BaseEventsPage.php");
 require_once("../classes/pages/MainPage.php");
+require_once("../classes/pages/MyEventsPage.php");
+require_once("../classes/pages/FavouriteEventsPage.php");
 require_once("../classes/pages/ErrorPage.php");
 require_once("../classes/pages/AddEventPage.php");
 require_once("../classes/pages/DeleteEventPage.php");
@@ -11,6 +13,7 @@ require_once("../classes/pages/LoginPage.php");
 require_once("../classes/pages/LogoutPage.php");
 require_once("../classes/pages/AdminPanelPage.php");
 require_once("../classes/pages/EditProfilePage.php");
+
 
 class RoutingService
 {
@@ -60,6 +63,12 @@ class RoutingService
                 break;
             case "edit-profile":
                 (new EditProfilePage())->render();
+                break;
+            case "my-events":
+                (new MyEventsPage())->render();
+                break;
+            case "favourite-events":
+                (new FavouriteEventsPage())->render();
                 break;
             default:
                 (new ErrorPage())->render();

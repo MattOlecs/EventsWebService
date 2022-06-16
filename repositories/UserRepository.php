@@ -212,7 +212,6 @@ class UserRepository
             ->prepare($queryString);
 
         try {
-            echo "<script>console.log('chuj');</script>";
             print($currentSession);
             $query->execute([$currentSession, $currentSession]);
         } catch (PDOException $ex) {

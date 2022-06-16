@@ -7,7 +7,7 @@ CREATE TABLE Event
   date TIMESTAMP NOT NULL,
   `description` VARCHAR(1000) NOT NULL,
   creator_user_id INT,
-  constraint event_user_id_fk FOREIGN KEY (creator_user_id) REFERENCES user (id) ON DELETE SET NULL ON UPDATE CASCADE
+  constraint event_user_id_fk FOREIGN KEY (creator_user_id) REFERENCES user (id) ON DELETE NULL ON UPDATE CASCADE
 );
 
 INSERT INTO `event`.`event`

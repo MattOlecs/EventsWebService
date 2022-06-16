@@ -17,16 +17,18 @@
                     <!-- Registration button -->
                     <form method="post">
                         <div class="d-flex">
-                            <?php if ($isRegistered) { ?>
-                                <button class="btn btn-outline-danger flex-shrink-0" type="submit">    
-                                Unregister
-                                <i class="bi bi-x-lg"></i>
-                                </button>
-                            <?php } else {?>
-                                <button class="btn btn-outline-dark flex-shrink-0" type="submit">    
-                                Register
-                                <i class="bi bi-check-lg"></i>
-                                </button>
+                            <?php if ($loginInfo != 0) { ?>
+                                <?php if ($isRegistered) { ?>
+                                    <button class="btn btn-outline-danger flex-shrink-0" type="submit">    
+                                    Unregister
+                                    <i class="bi bi-x-lg"></i>
+                                    </button>
+                                <?php } else {?>
+                                    <button class="btn btn-outline-dark flex-shrink-0" type="submit">    
+                                    Register
+                                    <i class="bi bi-check-lg"></i>
+                                    </button>
+                                <?php } ?>
                             <?php } ?>
                         </div>
                     <form>
