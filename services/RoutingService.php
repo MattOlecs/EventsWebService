@@ -12,6 +12,7 @@ require_once("../classes/pages/LogoutPage.php");
 require_once("../classes/pages/AdminPanelPage.php");
 require_once("../classes/pages/EditProfilePage.php");
 require_once("../classes/pages/DeleteUserPage.php");
+require_once("../classes/pages/AboutPage.php");
 
 class RoutingService
 {
@@ -39,7 +40,7 @@ class RoutingService
             if (!empty(trim($route)))
                 array_push($routes, $route);
         }
-        
+
         $var = '';
         if (UtilsRepository::isAdmin()) {
             $var = 'true';
@@ -55,6 +56,9 @@ class RoutingService
         switch ($routes[1]) {
             case "":
                 (new MainPage())->render();
+                break;
+            case "about":
+                (new AboutPage())->render();
                 break;
             case "add-event":
                 (new AddEventPage())->render();

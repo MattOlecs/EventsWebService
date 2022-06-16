@@ -9,5 +9,4 @@ class LogoutPage extends AbstractPage {
         $this->refreshStatus();
         RenderingService::render("LogoutPageTemplate.php");
     }
-
 }

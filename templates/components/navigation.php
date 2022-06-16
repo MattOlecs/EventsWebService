@@ -29,44 +29,40 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="/">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#!">All Products</a></li>
-                                <li>
-                                    <hr class="dropdown-divider" />
-                                </li>
-                                <li><a class="dropdown-item" href="#!">Popular Items</a></li>
-                                <li><a class="dropdown-item" href="#!">New Arrivals</a></li>
-                            </ul>
+                            <?php
+                            if ($loginInfo != 0) {
+                            ?>
+                                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">Menu</a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item" href="/add-event">Add event</a></li>
+                                    <li><a class="dropdown-item" href="/edit-profile/<?= $loginInfo ?>">Edit profile</a></li>
+                                    <?php
+                                    if ($_SESSION['isAdmin']) {
+                                    ?>
+                                        <li><a class="dropdown-item" href="/admin-panel">Admin Panel</a></li>
+                                    <?php
+                                    }
+                                    ?>
+                                </ul>
+                            <?php
+                            }
+                            ?>
                         </li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <?php if ($loginInfo == 0) {
+                        <?php
+                        if ($loginInfo == 0) {
                         ?>
                             <li><a id="register-link" href="/register">
                                     <button style="margin-top: -7px; margin-bottom: -7px; margin-right: 5px;" class="btn btn-secondary bg-primary">Register</button></a></li>
                             <li><a id="signin-link" href="/login">
                                     <button style="margin-top: -7px; margin-bottom: -7px;" class="btn btn-secondary bg-primary">Login</button></a></li>
                             </a></li>
-
                         <?php
                         } else {
                         ?>
-                            <?php
-                            if ($_SESSION['isAdmin']) {
-                            ?>
-                                <li><a id="admin-panel-link" href="/admin-panel">
-                                        <button style="margin-top: -7px; margin-bottom: -7px; margin-right: 5px; margin-left: 5px;" class="btn btn-secondary bg-primary">Admin panel</button>
-                                    </a></li>
-                            <?php
-                            }
-                            ?>
-                            <li><a id="signin-link" href="/add-event">
-                                    <button style="margin-top: -7px; margin-bottom: -7px; margin-right: 5px;" class="btn btn-secondary bg-primary">Add event</button></a></li>
-                            <li><a id="edit-profile-link" href="/edit-profile/<?= $loginInfo ?>">
-                                    <button style="margin-top: -7px; margin-bottom: -7px; margin-right: 5px;" class="btn btn-secondary bg-primary">Edit profile</button></a></li>
                             <li><a id="signin-link" href="/logout">
                                     <button style="margin-top: -7px; margin-bottom: -7px;" class="btn btn-secondary bg-primary">Logout</button></a></li>
                             </a></li>
