@@ -11,9 +11,16 @@ require_once("../classes/pages/LoginPage.php");
 require_once("../classes/pages/LogoutPage.php");
 require_once("../classes/pages/AdminPanelPage.php");
 require_once("../classes/pages/EditProfilePage.php");
+require_once("../classes/pages/DeleteUserPage.php");
 
 class RoutingService
 {
+    private static $isAdmin;
+
+    public static function inject($value)
+    {
+        self::$isAdmin = $value;
+    }
 
     private static function getCurrentUri()
     {
@@ -32,6 +39,18 @@ class RoutingService
             if (!empty(trim($route)))
                 array_push($routes, $route);
         }
+        
+        $var = '';
+        if (UtilsRepository::isAdmin()) {
+            $var = 'true';
+        } else {
+            $var = 'false';
+        }
+        echo "<script>console.log('RoutingService: $routes[1]');</script>";
+        echo "<script>console.log('RoutingService: $routes[2]');</script>";
+        echo "<script>console.log('RoutingService: $var');</script>";
+        echo "<script>console.log('RoutingService: $routes[3]');</script>";
+        echo "<script>console.log('RoutingService: $routes[0]');</script>";
 
         switch ($routes[1]) {
             case "":
@@ -56,10 +75,18 @@ class RoutingService
                 (new LogoutPage())->render();
                 break;
             case "admin-panel":
+                // if (UtilsRepository::isAdmin()) {
+                //     (new AdminPanelPage())->render();
+                // } else {
+                //     (new MainPage())->render();
+                // }
                 (new AdminPanelPage())->render();
                 break;
             case "edit-profile":
-                (new EditProfilePage())->render();
+                (new EditProfilePage($routes[2]))->render();
+                break;
+            case "delete-user":
+                (new DeleteUserPage($routes[2]))->render();
                 break;
             default:
                 (new ErrorPage())->render();

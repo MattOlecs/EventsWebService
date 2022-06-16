@@ -1,14 +1,17 @@
 <?php
 
-class RenderingService {
+class RenderingService
+{
 
     private static $injection = array();
 
-    public static function inject($key, $value){
+    public static function inject($key, $value)
+    {
         self::$injection[$key] = $value;
     }
 
-    public static function render($contentFile, $variables = array()) {
+    public static function render($contentFile, $variables = array())
+    {
 
         $contentFileFullPath = "../templates/" . $contentFile;
 
@@ -25,7 +28,7 @@ class RenderingService {
                 ${$key} = $value;
             }
         }
-        
+
         require_once("../templates/components/navigation.php");
         require_once("../templates/components/header.php");
 

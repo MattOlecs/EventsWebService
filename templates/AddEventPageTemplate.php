@@ -26,7 +26,7 @@
                 </div>
                 <!-- Button -->
                 <div class="row gx-4 gx-lg-5 px-4 p-2 align-items-center">
-                    <button name="submit" type="submit" class="btn btn-primary">Create event</button>
+                    <button name="submit" type="submit" class="btn btn-secondary bg-primary">Create event</button>
                 </div>
             <?php } else{ ?>
                 <div class="row gx-4 gx-lg-5 px-4 p-2 align-items-center">
