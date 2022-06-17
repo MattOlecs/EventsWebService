@@ -1,10 +1,4 @@
 <!-- Section-->
-<div class="text-center">
-    <?php
-    if ($loginInfo) { ?>
-        <p class="lead">Dzień doberek: <?= $user['login'] ?> :)</p>
-    <?php } ?>
-</div>
 <section class="py-5">
     <div class="container px-4 px-lg-5 mt-5">
         <div class="container-fluid px-4">
@@ -56,26 +50,6 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-xl-6">
-                    <div class="card mb-4">
-                        <div class="card-header">
-                            <i class="fas fa-chart-area me-1"></i>
-                            Area Chart Example
-                        </div>
-                        <div class="card-body"><canvas id="myAreaChart" width="100%" height="40"></canvas></div>
-                    </div>
-                </div>
-                <div class="col-xl-6">
-                    <div class="card mb-4">
-                        <div class="card-header">
-                            <i class="fas fa-chart-bar me-1"></i>
-                            Bar Chart Example
-                        </div>
-                        <div class="card-body"><canvas id="myBarChart" width="100%" height="40"></canvas></div>
-                    </div>
-                </div>
-            </div>
             <div class="card mb-4">
                 <div class="card-header">
                     <i class="fas fa-table me-1"></i>
@@ -115,20 +89,18 @@
                             <?php
                             foreach ($users as $user) {
                             ?>
-                                <form method= "POST">
-                                    <tr data-href="/">
-                                        <td><name="id"/><?= $user['id'] ?></td>
-                                        <td><?= $user['login'] ?></td>
-                                        <td><?= $user['username'] ?></td>
-                                        <td><?= $user['email'] ?></td>
-                                        <td><?= $user['password'] ?></td>
-                                        <td><?= $user['name'] ?></td>
-                                        <td><?= $user['surname'] ?></td>
-                                        <td><?= $user['allow_notifications'] ?></td>
-                                        <td><?= $user['is_admin'] ?></td>
-                                        <td><?= $user['is_active'] ?></td>
-                                    </tr>
-                                </form>
+                                <tr data-href="/edit-profile/<?= $user['id'] ?>">
+                                    <td><input type="hidden" name="id" /><?= $user['id'] ?></td>
+                                    <td><?= $user['login'] ?></td>
+                                    <td><?= $user['username'] ?></td>
+                                    <td><?= $user['email'] ?></td>
+                                    <td><?= $user['password'] ?></td>
+                                    <td><?= $user['name'] ?></td>
+                                    <td><?= $user['surname'] ?></td>
+                                    <td><?= $user['allow_notifications'] ?></td>
+                                    <td><?= $user['is_admin'] ?></td>
+                                    <td><?= $user['is_active'] ?></td>
+                                </tr>
                             <?php
                             }
                             ?>

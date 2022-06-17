@@ -11,6 +11,7 @@ class UtilsRepository
 
     public static function logout()
     {
+        echo "<script>console.log('logout');</script>";
         UserRepository::logLogout();
         session_unset();
         session_destroy();
@@ -29,6 +30,6 @@ class UtilsRepository
         if (isset($_SESSION['isAdmin']))
             return $_SESSION['isAdmin'];
         else
-            return 0;
+            return false;
     }
 }

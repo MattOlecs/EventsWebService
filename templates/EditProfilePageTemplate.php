@@ -7,8 +7,8 @@
                         <h4 class="text-right">Profile Settings</h4>
                     </div>
                     <div class="row mt-2">
-                        <div class="col-md-6"><label class="labels">First name</label><input type="text" class="form-control" value="<?= $current['first_name'] ?>" name='first_name'></div>
-                        <div class="col-md-6"><label class="labels">Last name</label><input type="text" class="form-control" value="<?= $current['last_name'] ?>" name='last_name'></div>
+                        <div class="col-md-6"><label class="labels">First name</label><input type="text" class="form-control" value="<?= $current['name'] ?>" name='name'></div>
+                        <div class="col-md-6"><label class="labels">Last name</label><input type="text" class="form-control" value="<?= $current['surname'] ?>" name='surname'></div>
                         <div class="col-md-12"><label class="labels">Username</label><input type="text" class="form-control" value="<?= $current['username'] ?>" name='username' required></div>
                     </div>
                     <div class="row mt-2">
@@ -21,10 +21,10 @@
                                 Notifications
                             </label>
                             <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                                <input type="radio" class="btn-check" name="allow_notifications" id="allow_radio1" autocomplete="off" value = 0 <?php if($current['allow_notifications'] == 0) echo('checked')?>>
+                                <input type="radio" class="btn-check" name="allow_notifications" id="allow_radio1" autocomplete="off" value=0 <?php if ($current['allow_notifications'] == 0) echo ('checked') ?>>
                                 <label class="btn btn-outline-primary" for="allow_radio1">No</label>
 
-                                <input type="radio" class="btn-check" name="allow_notifications" id="allow_radio2" autocomplete="off" value = 1 <?php if($current['allow_notifications'] == 1) echo('checked')?>>
+                                <input type="radio" class="btn-check" name="allow_notifications" id="allow_radio2" autocomplete="off" value=1 <?php if ($current['allow_notifications'] == 1) echo ('checked') ?>>
                                 <label class="btn btn-outline-primary" for="allow_radio2">Yes</label>
                             </div>
                         </div>
@@ -35,10 +35,10 @@
                                     Administrator
                                 </label>
                                 <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                                    <input type="radio" class="btn-check" name="is_admin" id="admin_radio1" autocomplete="off" value = 0 <?php if($current['is_admin'] == 0) echo('checked')?>>
+                                    <input type="radio" class="btn-check" name="is_admin" id="admin_radio1" autocomplete="off" value=0 <?php if ($current['is_admin'] == 0) echo ('checked') ?>>
                                     <label class="btn btn-outline-primary" for="admin_radio1">No</label>
 
-                                    <input type="radio" class="btn-check" name="is_admin" id="admin_radio2" autocomplete="off" value = 1 <?php if($current['is_admin'] == 1) echo('checked')?>>
+                                    <input type="radio" class="btn-check" name="is_admin" id="admin_radio2" autocomplete="off" value=1 <?php if ($current['is_admin'] == 1) echo ('checked') ?>>
                                     <label class="btn btn-outline-primary" for="admin_radio2">Yes</label>
                                 </div>
                             </div>
@@ -48,16 +48,23 @@
                                 </label>
                                 <br>
                                 <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                                    <input type="radio" class="btn-check" name="is_active" id="active_radio1" autocomplete="off" value = 0 <?php if($current['is_active'] == 0) echo('checked')?>>
+                                    <input type="radio" class="btn-check" name="is_active" id="active_radio1" autocomplete="off" value=0 <?php if ($current['is_active'] == 0) echo ('checked') ?>>
                                     <label class="btn btn-outline-primary" for="active_radio1">No</label>
 
-                                    <input type="radio" class="btn-check" name="is_active" id="active_radio2" autocomplete="off" value = 1 <?php if($current['is_active'] == 1) echo('checked')?>>
+                                    <input type="radio" class="btn-check" name="is_active" id="active_radio2" autocomplete="off" value=1 <?php if ($current['is_active'] == 1) echo ('checked') ?>>
                                     <label class="btn btn-outline-primary" for="active_radio2">Yes</label>
                                 </div>
                             </div>
                         <?php } ?>
-                        <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit">Save Profile</button></div>
-                    </div>   
+                        <div class="mt-5 text-center"><button class="btn btn-primary bg-primary" type="submit">Save Profile</button></div>
+                        <?php
+                        if ($_SESSION['isAdmin'] and $_SESSION['id'] != $current['id']) {
+                        ?>
+                            <a class="btn btn-danger" href="/delete-user/<?= $current['id'] ?>">Delete user <i class="bi bi-calendar-x-fill"></i></a>
+                        <?php
+                        }
+                        ?>
+                    </div>
                 </form>
                 <?php
                 if (isset($errors)) {
