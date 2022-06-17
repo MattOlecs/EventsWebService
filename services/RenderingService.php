@@ -2,7 +2,6 @@
 
 class RenderingService
 {
-
     private static $injection = array();
 
     public static function inject($key, $value)
@@ -12,7 +11,6 @@ class RenderingService
 
     public static function render($contentFile, $variables = array())
     {
-
         $contentFileFullPath = "../templates/" . $contentFile;
 
         if (count($variables) > 0) {

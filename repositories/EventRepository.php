@@ -67,6 +67,21 @@ class EventRepository
         }
     }
 
+    public static function doesEventExist($id)
+    {
+        $queryString = "SELECT 1 FROM `event` WHERE `id` = $id";
+
+        $query = DbConnection::getDatabaseInstance()
+            ->getDatabaseAccess()
+            ->prepare($queryString);
+
+        $query->execute();
+
+        $queryResult = $query->fetchAll(PDO::FETCH_ASSOC);
+
+        return count($queryResult) > 0;
+    }
+
     public static function isUserRegisteredforEvent($eventId, $userId)
     {
         $queryString =

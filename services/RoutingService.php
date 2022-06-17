@@ -16,7 +16,6 @@ require_once("../classes/pages/EditProfilePage.php");
 require_once("../classes/pages/DeleteUserPage.php");
 require_once("../classes/pages/AboutPage.php");
 
-
 class RoutingService
 {
     private static $isAdmin;
@@ -99,5 +98,9 @@ class RoutingService
             default:
                 (new ErrorPage())->render();
         }
+    }
+
+    public static function redirectToErrorPage(){
+        header("Location: /error");
     }
 }
