@@ -31,6 +31,15 @@
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="/">Home</a></li>
                         <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
                         <li class="nav-item dropdown">
+                            <?php if ($loginInfo != 0) {?>
+                                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">My events</a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item" href="/favourite-events">Favourites</a></li>
+                                    <li><a class="dropdown-item" href="/crated-by-me-events">Created by me</a></li>
+                                </ul>
+                            <?php }?>
+                        </li>
+                        <li class="nav-item dropdown">
                             <?php
                             if ($loginInfo != 0) {
                             ?>

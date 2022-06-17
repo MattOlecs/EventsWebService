@@ -1,7 +1,9 @@
 <?php
-
 require_once("../classes/abstracts/AbstractPage.php");
+require_once("../classes/pages/BaseEventsPage.php");
 require_once("../classes/pages/MainPage.php");
+require_once("../classes/pages/MyEventsPage.php");
+require_once("../classes/pages/FavouriteEventsPage.php");
 require_once("../classes/pages/ErrorPage.php");
 require_once("../classes/pages/AddEventPage.php");
 require_once("../classes/pages/DeleteEventPage.php");
@@ -47,11 +49,6 @@ class RoutingService
         } else {
             $var = 'false';
         }
-        echo "<script>console.log('RoutingService: $routes[1]');</script>";
-        echo "<script>console.log('RoutingService: $routes[2]');</script>";
-        echo "<script>console.log('RoutingService: $var');</script>";
-        echo "<script>console.log('RoutingService: $routes[3]');</script>";
-        echo "<script>console.log('RoutingService: $routes[0]');</script>";
 
         switch ($routes[1]) {
             case "":
@@ -92,8 +89,18 @@ class RoutingService
             case "delete-user":
                 (new DeleteUserPage($routes[2]))->render();
                 break;
+            case "crated-by-me-events":
+                (new MyEventsPage())->render();
+                break;
+            case "favourite-events":
+                (new FavouriteEventsPage())->render();
+                break;
             default:
                 (new ErrorPage())->render();
         }
+    }
+
+    public static function redirectToErrorPage(){
+        header("Location: /error");
     }
 }

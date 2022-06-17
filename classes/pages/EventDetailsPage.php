@@ -18,6 +18,11 @@ class EventDetailsPage extends AbstractPage
     {
         $this->setTitle('Details');
 
+        if (!EventRepository::doesEventExist($this->eventId)){
+            RoutingService::redirectToErrorPage();
+            return;
+        }
+
         $event = EventRepository::getEvent($this->eventId);
         $creatorData = UserRepository::getUser($event['id_owner']);
         $creatorName = $creatorData['login'];

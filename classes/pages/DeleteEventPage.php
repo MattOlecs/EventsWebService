@@ -15,6 +15,11 @@ class DeleteEventPage extends AbstractPage {
     public function render() {
         $this->setTitle('Delete event');
 
+        if (!EventRepository::doesEventExist($this->eventId)){
+            RoutingService::redirectToErrorPage();
+            return;
+        }
+
         $eventTitle = EventRepository::getEvent($this->eventId)['title'];
         $isDeleted = false;
 

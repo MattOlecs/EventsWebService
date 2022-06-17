@@ -4,7 +4,7 @@ class DbConnection {
     private static $dbInstance;
     private $db;
     private $dbLogin = 'root';
-    private $dbPassword = '';
+    private $dbPassword = '1111';
 
     public static function getDatabaseInstance() {
         if(is_null(DbConnection::$dbInstance)) {
