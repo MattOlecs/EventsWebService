@@ -12414,9 +12414,7 @@ fieldset:disabled .btn {
 
 html,
 body {
-  height: 100%;
-  background-color: red;
-  color:pink !important;
+  height: 100%;con
 }
 
 #layoutAuthentication {

@@ -2,19 +2,22 @@
 
 require_once('../repositories/EventRepository.php');
 
-class EventDetailsPage extends AbstractPage{
-    
+class EventDetailsPage extends AbstractPage
+{
+
     private $eventId;
 
-    public function __construct($id) {
+    public function __construct($id)
+    {
         parent::__construct();
 
         $this->eventId = $id;
     }
-    
-    public function render() {
+
+    public function render()
+    {
         $this->setTitle('Details');
-        
+
         $event = EventRepository::getEvent($this->eventId);
         $creatorData = UserRepository::getUser($event['id_owner']);
         $creatorName = $creatorData['login'];
@@ -22,12 +25,11 @@ class EventDetailsPage extends AbstractPage{
         $isRegistered = EventRepository::isUserRegisteredforEvent($this->eventId, $this->getLoginInfo());
         $isCreator = $event['id_owner'] == $this->getLoginInfo();
 
-        if($_SERVER['REQUEST_METHOD'] == 'POST'){
-            if($isRegistered){
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            if ($isRegistered) {
                 EventRepository::unregisterUserFromEvent($this->eventId, $this->getLoginInfo());
                 $isRegistered = false;
-            }
-            else{
+            } else {
                 EventRepository::registerUserForEvent($this->eventId, $this->getLoginInfo());
                 $isRegistered = true;
             }
@@ -36,13 +38,14 @@ class EventDetailsPage extends AbstractPage{
         }
 
         RenderingService::render(
-            "EventDetailsPageTemplate.php", 
+            "EventDetailsPageTemplate.php",
             [
                 'event' => $event,
                 'creator' => $creatorName,
                 'registeredUsers' => $registeredUsers,
                 'isRegistered' => $isRegistered,
                 'isCreator' => $isCreator
-            ]);
+            ]
+        );
     }
 }

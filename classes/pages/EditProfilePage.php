@@ -2,7 +2,17 @@
 
 require_once('../repositories/EventRepository.php');
 
-class EditProfilePage extends AbstractPage {
+class EditProfilePage extends AbstractPage
+{
+    private $userId;
+
+    public function __construct($id)
+    {
+        parent::__construct();
+
+        $this->userId = $id;
+    }
+
     private $defaults = [
         'username' => 'Username',
         'email' => 'Email',
@@ -10,17 +20,17 @@ class EditProfilePage extends AbstractPage {
     ];
 
     private $values = array();
-    
-    public function render() {
+
+    public function render()
+    {
         $this->setTitle('Edit profile');
 
         $errors = array();
         $success = "";
 
-        if(isset($_POST['id'])){
-            $id = $_POST['id'];
-        }
-        else{
+        if (isset($this->userId) and $_SESSION['isAdmin'] == 1) {
+            $id = $this->userId;
+        } else {
             $id = $this->getLoginInfo();
         }
 
@@ -52,7 +62,7 @@ class EditProfilePage extends AbstractPage {
             'defaults' => $this->defaults,
             'values' => $this->values,
             'success' => $success,
-            'current' => UserRepository::getUser($_SESSION['id'])
+            'current' => UserRepository::getUser($id)
         ]);
     }
 

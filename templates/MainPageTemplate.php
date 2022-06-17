@@ -2,7 +2,7 @@
 <div class="text-center">
     <?php
     if ($loginInfo) { ?>
-        <p class="lead">Dzień doberek: <?= $user['login'] ?> :)</p>
+        <p class="lead fw-normal mb-0">Welcome back <?= $user['login'] ?> :)</p>
     <?php } ?>
 </div>
 <section class="py-5">
