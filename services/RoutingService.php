@@ -50,11 +50,6 @@ class RoutingService
         } else {
             $var = 'false';
         }
-        echo "<script>console.log('RoutingService: $routes[1]');</script>";
-        echo "<script>console.log('RoutingService: $routes[2]');</script>";
-        echo "<script>console.log('RoutingService: $var');</script>";
-        echo "<script>console.log('RoutingService: $routes[3]');</script>";
-        echo "<script>console.log('RoutingService: $routes[0]');</script>";
 
         switch ($routes[1]) {
             case "":
@@ -95,7 +90,7 @@ class RoutingService
             case "delete-user":
                 (new DeleteUserPage($routes[2]))->render();
                 break;
-            case "my-events":
+            case "crated-by-me-events":
                 (new MyEventsPage())->render();
                 break;
             case "favourite-events":
