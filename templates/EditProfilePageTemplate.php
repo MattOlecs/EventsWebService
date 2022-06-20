@@ -56,7 +56,7 @@
                                 </div>
                             </div>
                         <?php } ?>
-                        <div class="mt-5 text-center"><button class="btn btn-primary bg-primary" type="submit">Save Profile</button></div>
+                        <div class="mt-5 text-center"><button class="btn btn-primary bg-primary" type="submit">Save Profile</button>
                         <?php
                         if ($_SESSION['isAdmin'] and $_SESSION['id'] != $current['id']) {
                         ?>
@@ -64,6 +64,7 @@
                         <?php
                         }
                         ?>
+                        </div>
                     </div>
                 </form>
                 <?php

@@ -1,6 +1,6 @@
 <section class="py-5">
         <div class="container px-4 px-lg-5 my-5">
-            <?php if ($isCreator) { ?>
+            <?php if ($isCreator or $isAdmin) { ?>
                 <div class="row gx-4 gx-lg-5 align-items-right" style="width: 11vh;">
                     <a class="btn btn-danger" href="/delete-event/<?= $event['id'] ?>">Delete event <i class="bi bi-calendar-x-fill"></i></a>
                 </div>

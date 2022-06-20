@@ -108,6 +108,24 @@ class UserRepository
         return false;
     }
 
+    public static function verifyStatus($id)
+    {
+        $queryString = "SELECT * FROM user WHERE id = :id";
+
+        $db = DbConnection::getDatabaseInstance()
+            ->getDatabaseAccess();
+        $query = $db->prepare($queryString);
+
+        $query->bindParam(":id", $id);
+        $query->execute();
+
+        if ($query->rowCount() > 0) {
+            $user = $query->fetch(PDO::FETCH_ASSOC);
+            return 1 == $user['is_active'] ? $user['login'] : false;
+        }
+        return false;
+    }
+
     public static function userIsAdmin($id)
     {
         $queryString = "SELECT is_admin FROM user WHERE id = :id";
@@ -239,7 +257,7 @@ class UserRepository
 
     public static function updateUser($id, $userArray)
     {
-        $candidate_fields = ['first_name', 'last_name', 'email', 'username', 'password', 'is_admin', 'is_active', 'allow_notifications'];
+        $candidate_fields = ['name', 'surname', 'email', 'username', 'password', 'is_admin', 'is_active', 'allow_notifications'];
         $fields = array();
         $queryString = "UPDATE user SET ";
 

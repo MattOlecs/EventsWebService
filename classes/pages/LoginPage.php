@@ -27,6 +27,8 @@ class LoginPage extends AbstractPage
                     $errors[] = 'User with this login does not exist.';
                 } else if (!UserRepository::verifyUser($id, $_POST['password'])) {
                     $errors[] = 'Wrong Password!';
+                } else if (!UserRepository::verifyStatus($id)) {
+                    $errors[] = 'This user is inactive!';
                 } else {
                     $this->values = [];
                     UtilsRepository::login($id);
