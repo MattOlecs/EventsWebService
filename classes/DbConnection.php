@@ -17,7 +17,7 @@ class DbConnection {
     private function __construct() {
         try {
             $this->db = new PDO(
-                'mysql:host=localhost;dbname=events_web_service_db',
+                'mysql:host=localhost;dbname=events_db',
                 $this->dbLogin,
                 $this->dbPassword);
             $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

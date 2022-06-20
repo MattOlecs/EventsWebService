@@ -9,18 +9,18 @@
                 <div class="row gx-4 gx-lg-5 px-4 p-2 align-items-center">
                     <div class="col-md-6 align-items-center">
                         <div class="d-flex justify-content-center">
-                            <button name="confirm_button" type="submit" class="btn btn-danger" value="confirm" style="width: 60vh;" onclick="location.href='../';">Confirm</button>
+                            <button name="confirm_button" type="submit" class="btn btn-danger" value="confirm" style="width: 60vh;">Confirm</button>
                         </div>
                     </div>
                     <div class="col-md-6 align-items-center">
                         <div class="d-flex justify-content-center">
-                            <button name="cancel_button" type="submit" class="btn btn-primary" value="cancel" style="width: 60vh;">Cancel</button>
+                            <a name="cancel_button" type="submit" class="btn btn-primary" value="cancel" style="width: 60vh;" href="../">Cancel</a>
                         </div>
                     </div>
                 </div>
             <?php } else { ?>
                 <div class="row gx-4 gx-lg-5 px-4 p-2 align-items-center">
-                    <h1 class="display-7 fw text-center">Event <b><?= $eventName ?></b> deleted successfully.</h1>
+                    <h1 class="display-7 fw text-center">Event <b><?= $eventName ?></b> Deleted successfully.</h1>
                 </div>
                 <div class="row gx-4 gx-lg-5 px-4 p-2 align-items-center">
                     <div class="d-flex justify-content-center">

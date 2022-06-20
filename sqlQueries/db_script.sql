@@ -31,7 +31,7 @@ CREATE TABLE `event` (
   `id` int(11) NOT NULL,
   `id_owner` int(11) NOT NULL,
   `title` varchar(45) NOT NULL,
-  `description` varchar(100) NOT NULL,
+  `description` varchar(200) NOT NULL,
   `date` date NOT NULL,
   `create_date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

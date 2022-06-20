@@ -12,7 +12,7 @@
                 <!-- Description input -->
                 <label>Event description:</label>
                 <div class="row gx-4 gx-lg-5 px-4 p-2 align-items-center">
-                    <textarea id="description" name="description" placeholder="Description" cols="40" rows="5" class="form-control" required></textarea>
+                    <textarea id="description" name="description" placeholder="Description" cols="40" rows="5" class="form-control" maxlength="199" required></textarea>
                 </div>
                 <!-- Date input -->
                 <label>Event date:</label>
