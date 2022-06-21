@@ -25,7 +25,7 @@ class EventDetailsPage extends AbstractPage
 
         $event = EventRepository::getEvent($this->eventId);
         $creatorData = UserRepository::getUser($event['id_owner']);
-        $creatorName = $creatorData['login'];
+        $creatorName = $creatorData['username'];
         $registeredUsers = EventRepository::getNamesOfUsersRegisteredForEvent($this->eventId);
         $isRegistered = EventRepository::isUserRegisteredforEvent($this->eventId, $this->getLoginInfo());
         $isCreator = $event['id_owner'] == $this->getLoginInfo();
