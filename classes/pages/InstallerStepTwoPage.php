@@ -21,7 +21,7 @@ class InstallerStepTwoPage extends AbstractInstallerPage{
         ]);
     }
 
-    private function writeToConfigFile($values){
+    private function writeToConfigFile(){
         $file=fopen("../public/config/config.php","w");
         $config = 
         "<?php
@@ -36,6 +36,6 @@ class InstallerStepTwoPage extends AbstractInstallerPage{
         } 
         
         fclose($file); 
-        $this->isDataSet = true;
+        $this->isStepDone = true;
     }
 }

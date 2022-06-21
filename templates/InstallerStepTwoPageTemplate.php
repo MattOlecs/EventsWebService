@@ -29,10 +29,11 @@
             </div>
             <div class="row gx-4 gx-lg-5 px-4 p-2 align-items-center">
                 <div class="d-flex justify-content-center">
-                    <button name="submit" type="submit" class="btn btn-primary">Zapisz dane</button>
                     <?php if ($isStepDone) { ?>
                         <a href="3" class="btn btn-primary">Następny krok</a>
-                    <?php } ?>   
+                    <?php } else {?>
+                        <button name="submit" type="submit" class="btn btn-primary">Zapisz dane</button>
+                    <?php }?>
                 </div>
             </div>
         </div>
