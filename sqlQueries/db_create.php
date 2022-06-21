@@ -113,10 +113,10 @@ class db_create{
 
 
         $create[] .= "INSERT INTO `user` (`id`, `login`, `email`, `password`, `is_admin`, `is_active`, `allow_notifications`, `name`, `surname`, `username`, `register_date`) VALUES
-        (16, 'tnorek21', 'tnorek21@gmail.com', 'tnorek21', 1, 1, 1, 'Tadeusz', 'Norek', 'tnorek21', '2022-06-20'),
-        (18, 'userek01', 'userek@wp.pl', 'userek123', 0, 1, 1, 'Marek', 'Mostowiak', 'userek01', '2022-06-20'),
-        (19, 'americano', 'usa@wp.pl', 'usausausa', 0, 1, 0, 'John', 'Moore', 'AmericanJohn', '2022-06-21'),
-        (20, 'LukeSkywalker', 'luke@wp.pl', 'nohand123', 0, 1, 1, 'Luke', 'Skywalker', 'LukeSkywalker', '2022-06-21');";
+        (16, 'tnorek21', 'tnorek21@gmail.com', md5('tnorek21'), 1, 1, 1, 'Tadeusz', 'Norek', 'tnorek21', '2022-06-20'),
+        (18, 'userek01', 'userek@wp.pl', md5('userek123'), 0, 1, 1, 'Marek', 'Mostowiak', 'userek01', '2022-06-20'),
+        (19, 'americano', 'usa@wp.pl', md5('usausausa'), 0, 1, 0, 'John', 'Moore', 'AmericanJohn', '2022-06-21'),
+        (20, 'LukeSkywalker', 'luke@wp.pl', md5('nohand123'), 0, 1, 1, 'Luke', 'Skywalker', 'LukeSkywalker', '2022-06-21');";
 
 
         $create[] .= "ALTER TABLE `event`

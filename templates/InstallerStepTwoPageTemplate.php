@@ -25,7 +25,7 @@
             <!-- Password -->
             <label>Hasło:</label>
             <div class="row gx-4 gx-lg-5 px-4 p-2 align-items-center">
-                <input id="password" name="password" type="password" class="form-control" required>
+                <input id="password" name="password" type="password" class="form-control">
             </div>
             <div class="row gx-4 gx-lg-5 px-4 p-2 align-items-center">
                 <div class="d-flex justify-content-center">

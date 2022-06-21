@@ -48,7 +48,7 @@ class UserRepository
 
         try {
             $db->beginTransaction();
-            $query->execute([null, $login, $email, $password, 0, 1, 1, '', '', $login]);
+            $query->execute([null, $login, $email, $password, 0, 1, 0, '', '', $login]);
             $id = $db->lastInsertId();
             $db->commit();
         } catch (PDOException $ex) {
