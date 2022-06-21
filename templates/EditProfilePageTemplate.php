@@ -57,13 +57,13 @@
                             </div>
                         <?php } ?>
                         <div class="mt-5 text-center"><button class="btn btn-primary bg-primary" type="submit">Save Profile</button>
-                        <?php
-                        if ($_SESSION['isAdmin'] and $_SESSION['id'] != $current['id']) {
-                        ?>
-                            <a class="btn btn-danger" href="/delete-user/<?= $current['id'] ?>">Delete user <i class="bi bi-calendar-x-fill"></i></a>
-                        <?php
-                        }
-                        ?>
+                            <?php
+                            if ($_SESSION['isAdmin'] and $_SESSION['id'] != $current['id']) {
+                            ?>
+                                <a class="btn btn-danger" href="/delete-user/<?= $current['id'] ?>">Delete user <i class="bi bi-calendar-x-fill"></i></a>
+                            <?php
+                            }
+                            ?>
                         </div>
                     </div>
                 </form>
