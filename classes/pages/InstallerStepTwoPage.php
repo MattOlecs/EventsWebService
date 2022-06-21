@@ -2,12 +2,12 @@
 
 class InstallerStepTwoPage extends AbstractInstallerPage{
     
-    private $headerText;
-    private $isDataSet;
+    private $installerMessage;
+    private $isStepDone;
 
     public function render() {
-        $this->headerText = "Instalacja serwisu";
-        $this->isDataSet = false;
+        $this->installerMessage = "Tworzenie pliku konfiguracyjnego";
+        $this->isStepDone = false;
 
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             $this->writeToConfigFile($_POST);
@@ -16,21 +16,22 @@ class InstallerStepTwoPage extends AbstractInstallerPage{
         RenderingService::render("InstallerStepTwoPageTemplate.php",
         [
             'loginInfo' => 0,
-            'isDataSet' => $this->isDataSet,
-            'headerText' => $this->headerText
+            'isStepDone' => $this->isStepDone,
+            'installerMessage' => $this->installerMessage
         ]);
     }
 
     private function writeToConfigFile($values){
         $file=fopen("../public/config/config.php","w");
-        $config = "<?php
-         \$host=\"".$_POST['host']."\";
-         \$user=\"".$_POST['user']."\";
-         \$password=\"".$_POST['password']."\";
-         \$dbname=\"".$_POST['dbname']."\";";
+        $config = 
+        "<?php
+        global \$config;
+        \$config['host']=\"".$_POST['host']."\";
+        \$config['user']=\"".$_POST['user']."\";
+        \$config['password']=\"".$_POST['password']."\";
+        \$config['dbname']=\"".$_POST['dbname']."\";";
         
-         if (!fwrite($file, $config)) { 
-            print "Nie mogę zapisać do pliku ($file)"; 
+        if (!fwrite($file, $config)) { 
             exit; 
         } 
         

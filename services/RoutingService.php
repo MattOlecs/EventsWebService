@@ -19,6 +19,7 @@ require_once("../classes/pages/AboutPage.php");
 require_once("../classes/pages/InstallerStepOnePage.php");
 require_once("../classes/pages/InstallerStepTwoPage.php");
 require_once("../classes/pages/InstallerStepThreePage.php");
+require_once("../classes/pages/InstallerStepFourPage.php");
 
 class RoutingService
 {
@@ -48,6 +49,9 @@ class RoutingService
                 break;
             case 3:
                 (new InstallerStepThreePage())->render();
+                break;
+            case 4:
+                (new InstallerStepFourPage())->render();
         }
     }
 
@@ -128,4 +132,21 @@ class RoutingService
         header("Location: /installer/1");
     }
 
+    public static function isAtInstallerPage(){
+        $base_url = self::getCurrentUri();
+        $routes = explode('/', $base_url);
+        foreach ($routes as $route) {
+            if (!empty(trim($route)))
+                array_push($routes, $route);
+        }
+
+        $var = '';
+        if (UtilsRepository::isAdmin()) {
+            $var = 'true';
+        } else {
+            $var = 'false';
+        }
+
+        return $routes[1] == "installer";
+    }
 }

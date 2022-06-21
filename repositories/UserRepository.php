@@ -58,6 +58,31 @@ class UserRepository
         return $id;
     }
 
+    public static function insertAdmin($userArray)
+    {
+        $login = $userArray['login'];
+        $email = $userArray['email'];
+        $password = $userArray['password'];
+        $queryString =
+            "INSERT INTO `user`
+        (`id`, `login`, `email`, `password`, `is_admin`, `is_active`, `allow_notifications`, `name`, `surname`, `username`, `register_date`) VALUES (?,?,?,?,?,?,?,?,?,?, NOW());";
+
+        $db = DbConnection::getDatabaseInstance()
+            ->getDatabaseAccess();
+        $query = $db->prepare($queryString);
+
+        try {
+            $db->beginTransaction();
+            $query->execute([null, $login, $email, $password, 1, 1, 1, '', '', $login]);
+            $id = $db->lastInsertId();
+            $db->commit();
+        } catch (PDOException $ex) {
+            $db->rollBack();
+            return $ex->getMessage();
+        }
+        return $id;
+    }
+
     public static function deleteUser($id)
     {
         $queryString = "DELETE FROM `user` WHERE `id` = $id;";

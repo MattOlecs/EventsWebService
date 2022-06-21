@@ -2,11 +2,11 @@
 
 class InstallerStepThreePage extends AbstractInstallerPage{
     
-    private $headerText;
+    private $installerMessage;
     private $isStepDone;
 
     public function render() {
-        $this->headerText = "Instalacja serwisu";
+        $this->installerMessage = "Stwórz bazę danych";
         $this->isStepDone = false;
 
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
@@ -17,11 +17,17 @@ class InstallerStepThreePage extends AbstractInstallerPage{
         [
             'loginInfo' => 0,
             'isStepDone' => $this->isStepDone,
-            'headerText' => $this->headerText
+            'installerMessage' => $this->installerMessage
         ]);
     }
 
     private function createDbAndInsertData(){
-        UtilsRepository::createDB();
+        try{
+            UtilsRepository::createDB();
+            $this->installerMessage = "Poprawnie stworzono bazę danych.";
+            $this->isStepDone = true;
+        }catch(Exception $ex){
+            $this->installerMessage = "Tworzenie bazy danych nie powiodło się: " . $ex->getMessage();
+        }
     }
 }
