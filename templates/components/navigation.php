@@ -14,9 +14,9 @@
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="/styles/myStyle.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
-    <link href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" />
-    <link href="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js" />
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
+    <link href="https://cdn.datatables.net/3.6.0/css/jquery.dataTables.min.css" />
+    <link href="//cdn.datatables.net/3.6.0/js/jquery.dataTables.min.js" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/3.6.0/css/jquery.dataTables.css">
 </head>
 
 <body>

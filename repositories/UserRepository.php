@@ -40,7 +40,7 @@ class UserRepository
         //password_hash($userArray['password'], PASSWORD_DEFAULT);
         $queryString =
             "INSERT INTO `user`
-        (`id`, `login`, `email`, `password`, `is_admin`, `is_active`, `allow_notifications`, `name`, `surname`, `username`, `register_date`) VALUES (?,?,?,?,?,?,?,?,?,?, NOW());";
+        (`id`, `login`, `email`, `password`, `is_admin`, `is_active`, `allow_notifications`, `name`, `surname`, `username`, `register_date`) VALUES (?,?,?,md5(?),?,?,?,?,?,?, NOW());";
 
         $db = DbConnection::getDatabaseInstance()
             ->getDatabaseAccess();
@@ -65,7 +65,7 @@ class UserRepository
         $password = $userArray['password'];
         $queryString =
             "INSERT INTO `user`
-        (`id`, `login`, `email`, `password`, `is_admin`, `is_active`, `allow_notifications`, `name`, `surname`, `username`, `register_date`) VALUES (?,?,?,?,?,?,?,?,?,?, NOW());";
+        (`id`, `login`, `email`, `password`, `is_admin`, `is_active`, `allow_notifications`, `name`, `surname`, `username`, `register_date`) VALUES (?,?,?,md5(?),?,?,?,?,?,?, NOW());";
 
         $db = DbConnection::getDatabaseInstance()
             ->getDatabaseAccess();
@@ -128,7 +128,7 @@ class UserRepository
 
         if ($query->rowCount() > 0) {
             $user = $query->fetch(PDO::FETCH_ASSOC);
-            return $password == $user['password'] ? $user['login'] : false;
+            return md5($password) == $user['password'] ? $user['login'] : false;
         }
         return false;
     }
@@ -363,9 +363,11 @@ class UserRepository
         foreach ($candidate_fields as $field) {
             if (isset($userArray[$field])) {
                 $queryString = $queryString . $field . "=:$field, ";
-                if (strlen($userArray[$field]) == 1) {
+                if (strlen($userArray[$field]) == 1) 
                     $fields[$field] = (int)$userArray[$field];
-                } else {
+                else if ($field == 'password')
+                    $fields[$field] = md5($userArray[$field]);
+                else {
                     $fields[$field] = $userArray[$field];
                 }
             }
@@ -376,7 +378,6 @@ class UserRepository
         $db = DbConnection::getDatabaseInstance()
             ->getDatabaseAccess();
         $query = $db->prepare($queryString);
-        //return var_dump($fields);
 
         try {
             $db->beginTransaction();
