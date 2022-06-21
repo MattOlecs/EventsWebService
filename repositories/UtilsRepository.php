@@ -1,5 +1,7 @@
 <?php
 
+require_once('../classes/DbConnection.php');
+
 class UtilsRepository
 {
     public static function login($id)
@@ -31,5 +33,19 @@ class UtilsRepository
             return $_SESSION['isAdmin'];
         else
             return false;
+    }
+
+    public static function createDB(){
+        if (file_exists("../sqlQueries/db_create.php")){
+            include("../sqlQueries/db_create.php");
+
+            foreach(db_create::getCreateDbCommands() as $command){
+                $query = DbConnection::getDatabaseInstance()
+                ->getDatabaseAccess()
+                ->prepare($command);
+    
+                $query->execute();
+            }
+        }
     }
 }

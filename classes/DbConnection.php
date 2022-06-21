@@ -3,8 +3,6 @@
 class DbConnection {
     private static $dbInstance;
     private $db;
-    private $dbLogin = 'root';
-    private $dbPassword = 'Windows2021!';
 
     public static function getDatabaseInstance() {
         if(is_null(DbConnection::$dbInstance)) {
@@ -15,11 +13,23 @@ class DbConnection {
     }
 
     private function __construct() {
+       
+        if (file_exists("../public/config/config.php")){
+            include("../public/config/config.php");
+        }
+        
         try {
+            global $config;
+
+            $dbHost = $config['host'];
+            $dbName = $config['dbname'];
+            $dbLogin = $config['user'];
+            $dbPassword = $config['password'];
+
             $this->db = new PDO(
-                'mysql:host=localhost;dbname=events_web_service_db',
-                $this->dbLogin,
-                $this->dbPassword);
+                "mysql:host=$dbHost;dbname=$dbName",
+                $dbLogin,
+                $dbPassword);
             $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $this->db->setAttribute(PDO::ATTR_EMULATE_PREPARES, true);
         } catch (PDOException $e) {
