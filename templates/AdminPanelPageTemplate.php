@@ -45,12 +45,12 @@
                 </div>
                 <div class="col-xl-3 col-md-6">
                     <div class="card bg-primary text-white mb-4">
-                        <div class="card-body">Average logged in time: <b><?= $avgLoggedTime ?></b></div>
+                        <div class="card-body">Average logged in time: <b><br><?= $avgLoggedTime ?></b></div>
                     </div>
                 </div>
                 <div class="col-xl-3 col-md-6">
                     <div class="card bg-primary text-white mb-4">
-                        <div class="card-body">Most owned events user: <b><?= $mostOwnedEvents ?></b></div>
+                        <div class="card-body">Most owned events user: <br><b><?= $mostOwnedEvents ?></b></div>
                     </div>
                 </div>
                 <div class="col-xl-3 col-md-6">

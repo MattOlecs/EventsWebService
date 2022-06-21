@@ -65,7 +65,7 @@ class UserRepository
         $password = $userArray['password'];
         $queryString =
             "INSERT INTO `user`
-        (`id`, `login`, `email`, `password`, `is_admin`, `is_active`, `allow_notifications`, `name`, `surname`, `username`, `register_date`) VALUES (?,?,?,?,?,?,?,?,?,?, NOW());";
+        (`id`, `login`, `email`, `password`, `is_admin`, `is_active`, `allow_notifications`, `name`, `surname`, `username`, `register_date`) VALUES (?,?,?,md5(?),?,?,?,?,?,?, NOW());";
 
         $db = DbConnection::getDatabaseInstance()
             ->getDatabaseAccess();
