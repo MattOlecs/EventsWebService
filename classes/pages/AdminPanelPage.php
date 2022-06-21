@@ -23,6 +23,10 @@ class AdminPanelPage extends AbstractPage{
             'eventsJoinedToday' => EventRepository::getEventsJoinedToday(),
             'usersLogged' => UserRepository::getUsersLogged(),
             'usersLoggedToday' => UserRepository::getUsersLoggedToday(),
+            'avgLoggedTime' => UserRepository::getAvgLoggedTime(),
+            'mostOwnedEvents' => UserRepository::getMostOwnedEventsUserLogin(),
+            'mostActiveUser' => UserRepository::getMostActiveUser(),
+            'leastActiveUser' => UserRepository::getLeastActiveUser(),
             'isAdmin' => UserRepository::userIsAdmin($this->getLoginInfo())
         ]);
     }

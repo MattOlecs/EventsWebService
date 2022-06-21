@@ -2,12 +2,6 @@
 <section class="py-5">
     <div class="container px-4 px-lg-5 mt-5">
         <div class="container-fluid px-4">
-            <div class="card mb-4">
-                <div class="card-body">
-                    DataTables is a third party plugin that is used to generate the demo table below. For more information about DataTables, please visit the
-                    <a target="_blank" href="https://datatables.net/">official DataTables documentation</a>
-                </div>
-            </div>
             <div class="row">
                 <div class="col-xl-3 col-md-6">
                     <div class="card bg-primary text-white mb-4">
@@ -47,6 +41,26 @@
                 <div class="col-xl-3 col-md-6">
                     <div class="card bg-primary text-white mb-4">
                         <div class="card-body">Events joined today: <b><?= $eventsJoinedToday ?></b></div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-md-6">
+                    <div class="card bg-primary text-white mb-4">
+                        <div class="card-body">Average logged in time: <b><?= $avgLoggedTime ?></b></div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-md-6">
+                    <div class="card bg-primary text-white mb-4">
+                        <div class="card-body">Most owned events user: <b><?= $mostOwnedEvents ?></b></div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-md-6">
+                    <div class="card bg-primary text-white mb-4">
+                        <div class="card-body">Most active user: <br><b><?= $mostActiveUser ?></b></div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-md-6">
+                    <div class="card bg-primary text-white mb-4">
+                        <div class="card-body">Least active user : <b><br><?= $leastActiveUser ?></b></div>
                     </div>
                 </div>
             </div>

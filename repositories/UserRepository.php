@@ -201,6 +201,80 @@ class UserRepository
         return $query->fetch(PDO::FETCH_COLUMN);
     }
 
+    public static function getAvgLoggedTime() {
+        $queryString =
+        "SELECT round(SEC_TO_TIME(AVG(TIME_TO_SEC(`logged_time`))), 2) from logs where logged_time is not null;";
+
+    $query = DbConnection::getDatabaseInstance()
+        ->getDatabaseAccess()
+        ->prepare($queryString);
+
+    $query->execute();
+
+    return $query->fetch(PDO::FETCH_COLUMN);
+    }
+
+    public static function getMostOwnedEventsUserLogin() {
+        $queryString =
+        "select u.login, count(*) 
+        from event as e 
+        left join user as u 
+        on e.id_owner = u.id 
+        group by u.login 
+        order by count(*) desc 
+        limit 1;";
+
+    $query = DbConnection::getDatabaseInstance()
+        ->getDatabaseAccess()
+        ->prepare($queryString);
+
+    $query->execute();
+
+    return $query->fetch(PDO::FETCH_COLUMN);
+    }
+
+    public static function getMostActiveUser() {
+        $queryString =
+        "select u.login, SEC_TO_TIME(sum(TIME_TO_SEC(`logged_time`))) as sum_logged_time
+        from logs as l
+        left join user as u
+        on l.id_user = u.id
+        where u.login is not null
+        and l.logged_time is not null
+        group by u.login
+        order by sum_logged_time desc
+        limit 1;";
+
+    $query = DbConnection::getDatabaseInstance()
+        ->getDatabaseAccess()
+        ->prepare($queryString);
+
+    $query->execute();
+
+    return $query->fetch(PDO::FETCH_COLUMN);
+    }
+
+    public static function getLeastActiveUser() {
+        $queryString =
+        "select u.login, SEC_TO_TIME(sum(TIME_TO_SEC(`logged_time`))) as sum_logged_time
+        from logs as l
+        left join user as u
+        on l.id_user = u.id
+        where u.login is not null
+        and l.logged_time is not null
+        group by u.login
+        order by sum_logged_time asc
+        limit 1;";
+
+    $query = DbConnection::getDatabaseInstance()
+        ->getDatabaseAccess()
+        ->prepare($queryString);
+
+    $query->execute();
+
+    return $query->fetch(PDO::FETCH_COLUMN);
+    }
+
     public static function logLogin()
     {
         $queryString =
