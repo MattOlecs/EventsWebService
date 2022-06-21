@@ -1,5 +1,6 @@
 <?php
 require_once("../classes/abstracts/AbstractPage.php");
+require_once("../classes/abstracts/AbstractInstallerPage.php");
 require_once("../classes/pages/BaseEventsPage.php");
 require_once("../classes/pages/MainPage.php");
 require_once("../classes/pages/MyEventsPage.php");
@@ -15,6 +16,10 @@ require_once("../classes/pages/AdminPanelPage.php");
 require_once("../classes/pages/EditProfilePage.php");
 require_once("../classes/pages/DeleteUserPage.php");
 require_once("../classes/pages/AboutPage.php");
+require_once("../classes/pages/InstallerStepOnePage.php");
+require_once("../classes/pages/InstallerStepTwoPage.php");
+require_once("../classes/pages/InstallerStepThreePage.php");
+require_once("../classes/pages/InstallerStepFourPage.php");
 
 class RoutingService
 {
@@ -32,6 +37,22 @@ class RoutingService
         if (strstr($uri, '?')) $uri = substr($uri, 0, strpos($uri, '?'));
         $uri = '/' . trim($uri, '/');
         return $uri;
+    }
+
+    private static function renderInstallerPage($step){
+        switch ($step) {
+            case 1:
+                (new InstallerStepOnePage())->render();
+                break;
+            case 2:
+                (new InstallerStepTwoPage())->render();
+                break;
+            case 3:
+                (new InstallerStepThreePage())->render();
+                break;
+            case 4:
+                (new InstallerStepFourPage())->render();
+        }
     }
 
     public static function route()
@@ -95,6 +116,9 @@ class RoutingService
             case "favourite-events":
                 (new FavouriteEventsPage())->render();
                 break;
+            case "installer":
+                self::renderInstallerPage($routes[2]);
+                break;
             default:
                 (new ErrorPage())->render();
         }
@@ -102,5 +126,27 @@ class RoutingService
 
     public static function redirectToErrorPage(){
         header("Location: /error");
+    }
+
+    public static function redirectToInstallatorPage(){
+        header("Location: /installer/1");
+    }
+
+    public static function isAtInstallerPage(){
+        $base_url = self::getCurrentUri();
+        $routes = explode('/', $base_url);
+        foreach ($routes as $route) {
+            if (!empty(trim($route)))
+                array_push($routes, $route);
+        }
+
+        $var = '';
+        if (UtilsRepository::isAdmin()) {
+            $var = 'true';
+        } else {
+            $var = 'false';
+        }
+
+        return $routes[1] == "installer";
     }
 }
