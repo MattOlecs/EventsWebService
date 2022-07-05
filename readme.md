@@ -1,33 +1,27 @@
 # Events Web Service
-Rewolucyjny system rejestracji i zarządzania wydarzeniami. Serwis internetowy umożliwia przeglądanie oraz zarządzanie wydarzeniami wszelkiego rodzaju.
+Simple web service of events registration and management. Service allows to browse and manage events of all kind. Project made for studies.
 
-## Wymagania systemowe
-* wersja apache'a:  2.4.53 (Win64)
-* wersja PHP'a:     8.1.6
-* wersja MySQL:     10.4.24-MariaDB
+## System requirements
+* apache version:   2.4.53 (Win64)
+* PHP version:      8.1.6
+* MySQL version:    10.4.24-MariaDB
 
-## Instalacja
-SERWIS DZIAŁA NA SYSTEMIE LINUX
+## Installation
+SERVICE WORKS ON LINUX 
 
-1. Umieścić pliki projektu w folderze docelowym.
-1. Uzyskać od administratora adres serwera bazy danych oraz nazwę bazy danych która ma zostać uzupełniona tabelami oraz danymi.
-2. Przejść do adresu serwisu.
-3. Instalator zostanie uruchomiony automatycznie. Należy przejść przez wszystkie jego kroki i zwracać uwagę na wyświetlane instrukcje oraz napisy na przyciskach.
-4. Należy pamiętać aby usunąc plik installer.php z folderu config po ukończonej instalacji.
+1. Place project files in target folder.
+2. Prepare database serwer address and name of database to be filled with tables and data.
+3. Go to the service address.
+4. Installator will launch automatically. Follow its all steps and pay attention to instructions.
+5. After succesful installation delete installer.php file from the config folder.
 
-## Autorzy
-* **Kamil Goździk** 
-* *nr  album: 382815*
-* *kgozdzik*
+## Authors
+* *https://github.com/MattOlecs*
 
-* **Mateusz Oleksik** 
-* *nr  album: 384206*
-* *mat_ole*
+* *https://github.com/MattOlecs*
 
-* **Filip Chwaliński** 
-* *nr  album: 387867*
-* *filipchw*
+* *https://github.com/revky*
 
-## Wykorzystane zewnętrzne biblioteki
+## External libraries in use
 * bootstrap 5.1.3
 * jquery 3.6.0
