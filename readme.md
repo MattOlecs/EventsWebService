@@ -15,7 +15,7 @@ SERVICE WORKS ON LINUX
 4. Installator will launch automatically. Follow its all steps and pay attention to instructions.
 5. After succesful installation delete installer.php file from the config folder.
 
-## Autors
+## Authors
 * *https://github.com/MattOlecs*
 
 * *https://github.com/MattOlecs*
