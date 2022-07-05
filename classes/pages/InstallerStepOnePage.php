@@ -9,9 +9,9 @@ class InstallerStepOnePage extends AbstractInstallerPage{
 
         $this->isStepDone = false;
 
-        if (file_exists("../public/config/config.php")){
+        if (file_exists("config/config.php")){
 
-            if(is_writable("../public/config/config.php")){
+            if(is_writable("config/config.php")){
                 $this->installerMessage = "Wykrytko odpowiedni plik config.php.";
                 $this->isStepDone = true;
             }
@@ -20,7 +20,7 @@ class InstallerStepOnePage extends AbstractInstallerPage{
             }
         }
         else{
-            $this->installerMessage = "Należy stworzyć plik config.php w /public/config/";
+            $this->installerMessage = "Należy stworzyć plik config.php w /public/config/ i odświeżyć stronę";
         }
 
         RenderingService::render("InstallerStepOnePageTemplate.php",

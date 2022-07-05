@@ -1,25 +1,26 @@
 <?php
-require_once("../classes/abstracts/AbstractPage.php");
-require_once("../classes/abstracts/AbstractInstallerPage.php");
-require_once("../classes/pages/BaseEventsPage.php");
-require_once("../classes/pages/MainPage.php");
-require_once("../classes/pages/MyEventsPage.php");
-require_once("../classes/pages/FavouriteEventsPage.php");
-require_once("../classes/pages/ErrorPage.php");
-require_once("../classes/pages/AddEventPage.php");
-require_once("../classes/pages/DeleteEventPage.php");
-require_once("../classes/pages/EventDetailsPage.php");
-require_once("../classes/pages/RegisterPage.php");
-require_once("../classes/pages/LoginPage.php");
-require_once("../classes/pages/LogoutPage.php");
-require_once("../classes/pages/AdminPanelPage.php");
-require_once("../classes/pages/EditProfilePage.php");
-require_once("../classes/pages/DeleteUserPage.php");
-require_once("../classes/pages/AboutPage.php");
-require_once("../classes/pages/InstallerStepOnePage.php");
-require_once("../classes/pages/InstallerStepTwoPage.php");
-require_once("../classes/pages/InstallerStepThreePage.php");
-require_once("../classes/pages/InstallerStepFourPage.php");
+require_once("classes/abstracts/AbstractPage.php");
+require_once("classes/abstracts/AbstractInstallerPage.php");
+require_once("classes/pages/BaseEventsPage.php");
+require_once("classes/pages/MainPage.php");
+require_once("classes/pages/MyEventsPage.php");
+require_once("classes/pages/FavouriteEventsPage.php");
+require_once("classes/pages/ErrorPage.php");
+require_once("classes/pages/AddEventPage.php");
+require_once("classes/pages/DeleteEventPage.php");
+require_once("classes/pages/EventDetailsPage.php");
+require_once("classes/pages/RegisterPage.php");
+require_once("classes/pages/LoginPage.php");
+require_once("classes/pages/LogoutPage.php");
+require_once("classes/pages/AdminPanelPage.php");
+require_once("classes/pages/EditProfilePage.php");
+require_once("classes/pages/DeleteUserPage.php");
+require_once("classes/pages/AboutPage.php");
+require_once("classes/pages/InstallerStepZeroPage.php");
+require_once("classes/pages/InstallerStepOnePage.php");
+require_once("classes/pages/InstallerStepTwoPage.php");
+require_once("classes/pages/InstallerStepThreePage.php");
+require_once("classes/pages/InstallerStepFourPage.php");
 
 class RoutingService
 {
@@ -62,6 +63,11 @@ class RoutingService
         foreach ($routes as $route) {
             if (!empty(trim($route)))
                 array_push($routes, $route);
+        }
+
+        if(file_exists("config/installer.php") && !RoutingService::isAtInstallerPage()){
+            (new InstallerStepZeroPage())->render();
+            return;
         }
 
         $var = '';
@@ -125,12 +131,13 @@ class RoutingService
     }
 
     public static function redirectToErrorPage(){
-        header("Location: /error");
+        $url = $_SERVER['REQUEST_URI'];
+        header("Location: $url/error");
     }
 
-    public static function redirectToInstallatorPage(){
-        header("Location: /installer/1");
-    }
+    // public static function redirectToInstallatorPage(){
+    //     header("Location: /~mat_ole/installer/1");
+    // }
 
     public static function isAtInstallerPage(){
         $base_url = self::getCurrentUri();

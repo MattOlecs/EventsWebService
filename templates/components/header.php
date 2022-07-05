@@ -1,5 +1,5 @@
     <!-- Header-->
-    <header class="bg-dark py-5" style="background-image: url('/assets/background.jpg'); overflow: hidden; position: relative">
+    <header class="bg-dark py-5" style="background-image: url('assets/background.jpg'); overflow: hidden; position: relative">
         <div class="container px-4 px-lg-5 my-5">
             <div class="text-center text-white">
                 <h1 class="display-4 fw-bolder">Make things happen</h1>

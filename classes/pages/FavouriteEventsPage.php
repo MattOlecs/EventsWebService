@@ -1,6 +1,6 @@
 <?php
 
-require_once('../repositories/EventRepository.php');
+require_once('repositories/EventRepository.php');
 
 class FavouriteEventsPage extends BaseEventsPage{
 
