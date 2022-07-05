@@ -14,8 +14,8 @@ class DbConnection {
 
     private function __construct() {
        
-        if (file_exists("../public/config/config.php")){
-            include("../public/config/config.php");
+        if (file_exists("config/config.php")){
+            include("config/config.php");
         }
         
         try {

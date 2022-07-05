@@ -1,4 +1,6 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="../styles/myStyle.css" rel="stylesheet" />
+
 <section class="py-5">
     <div class="text-center">
         <h1 style="padding-top:5vh">Instalator :: Krok 4</h2>
@@ -31,10 +33,10 @@
                 <p>Instalacja zakończona.</p>
             </div>
             <div class="d-flex justify-content-center">
-                <p><b>Przed wejściem do serwisu należy usunąć plik installer.php z folderu /public/config/</b</p>
+                <p><b>Przed wejściem do serwisu należy usunąć plik installer.php z folderu config/</b</p>
             </div>
             <div class="d-flex justify-content-center">
-                <a href="/" class="btn btn-primary">Przejdź do serwisu</a>  
+                <a href="<?=$hrefPrefix?>" class="btn btn-primary">Przejdź do serwisu</a>  
             </div>
         <?php } ?>      
             </div>

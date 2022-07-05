@@ -1,8 +1,8 @@
 <?php
 
-require_once('../services/RenderingService.php');
-require_once('../repositories/UserRepository.php');
-require_once('../repositories/UtilsRepository.php');
+require_once('services/RenderingService.php');
+require_once('repositories/UserRepository.php');
+require_once('repositories/UtilsRepository.php');
 
 abstract class AbstractPage {
     private $loginInfo;

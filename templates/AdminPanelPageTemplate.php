@@ -103,7 +103,7 @@
                             <?php
                             foreach ($users as $user) {
                             ?>
-                                <tr data-href="/edit-profile/<?= $user['id'] ?>">
+                                <tr data-href="<?= $hrefPrefix ?>edit-profile/<?= $user['id'] ?>">
                                     <td><input type="hidden" name="id" /><?= $user['id'] ?></td>
                                     <td><?= $user['login'] ?></td>
                                     <td><?= $user['username'] ?></td>

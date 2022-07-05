@@ -1,3 +1,5 @@
+<link href="../styles/myStyle.css" rel="stylesheet" />
+
 <div class="container rounded bg-white mt-5 mb-5" method="POST">
     <div class="row">
         <div class="row justify-content-center">
@@ -13,7 +15,7 @@
                     </div>
                     <div class="row mt-2">
                         <div class="col-md-12"><label class="labels">Email</label><input type="email" class="form-control" value="<?= $current['email'] ?>" name='email' required></div>
-                        <div class="col-md-12"><label class="labels">Password</label><input type="password" class="form-control" value="<?= $current['password'] ?>" name='password' required></div>
+                        <div class="col-md-12"><label class="labels">Password</label><input type="password" class="form-control" value="" name='password' required></div>
                     </div>
                     <div class="row mt-3">
                         <div class="col-md-4">
@@ -60,7 +62,7 @@
                             <?php
                             if ($_SESSION['isAdmin'] and $_SESSION['id'] != $current['id']) {
                             ?>
-                                <a class="btn btn-danger" href="/delete-user/<?= $current['id'] ?>">Delete user <i class="bi bi-calendar-x-fill"></i></a>
+                                <a class="btn btn-danger" href="<?= $hrefPrefix ?>delete-user/<?= $current['id'] ?>">Delete user <i class="bi bi-calendar-x-fill"></i></a>
                             <?php
                             }
                             ?>
