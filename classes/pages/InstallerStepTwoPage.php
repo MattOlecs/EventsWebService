@@ -22,7 +22,7 @@ class InstallerStepTwoPage extends AbstractInstallerPage{
     }
 
     private function writeToConfigFile(){
-        $file=fopen("../public/config/config.php","w");
+        $file=fopen("config/config.php","w");
         $config = 
         "<?php
         global \$config;

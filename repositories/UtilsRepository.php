@@ -1,6 +1,6 @@
 <?php
 
-require_once('../classes/DbConnection.php');
+require_once('classes/DbConnection.php');
 
 class UtilsRepository
 {
@@ -36,8 +36,8 @@ class UtilsRepository
     }
 
     public static function createDB(){
-        if (file_exists("../sqlQueries/db_create.php")){
-            include("../sqlQueries/db_create.php");
+        if (file_exists("sqlQueries/db_create.php")){
+            include("sqlQueries/db_create.php");
 
             foreach(db_create::getCreateDbCommands() as $command){
                 $query = DbConnection::getDatabaseInstance()

@@ -25,7 +25,7 @@
                         <!-- Event actions-->
                         <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                             <div class="text-center">
-                                <a class="btn btn-outline-dark mt-auto" href="/event-details/<?= $event['id'] ?>">Details</a>
+                                <a class="btn btn-outline-dark mt-auto" href="./event-details/<?= $event['id'] ?>">Details</a>
                             </div>
                             <div class="text-center" style="padding-top:1vh">
                                 <?php if($loginInfo != 0) {?>

@@ -34,7 +34,7 @@
                 </div>
                 <div class="row gx-4 gx-lg-5 px-4 p-2 align-items-center">
                     <div class="d-flex justify-content-center">
-                        <a name="home_button" class="btn btn-light" style="width: 50vh;" href="../">Homepage</a>
+                        <a name="home_button" class="btn btn-light" style="width: 50vh;" href="./">Homepage</a>
                     </div>
                 </div>
             <?php } ?>

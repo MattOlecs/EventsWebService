@@ -1,6 +1,6 @@
 <?php
 
-require_once('../repositories/EventRepository.php');
+require_once('repositories/EventRepository.php');
 
 class EventDetailsPage extends AbstractPage
 {
@@ -19,7 +19,11 @@ class EventDetailsPage extends AbstractPage
         $this->setTitle('Details');
 
         if (!EventRepository::doesEventExist($this->eventId)){
-            RoutingService::redirectToErrorPage();
+                RenderingService::render(
+                "ErrorPageTemplate.php",
+                [
+                    'errorMessage' => "Event does not exist."
+                ]);
             return;
         }
 
