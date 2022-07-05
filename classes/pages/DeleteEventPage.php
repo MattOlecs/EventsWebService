@@ -1,6 +1,6 @@
 <?php
 
-require_once('../repositories/EventRepository.php');
+require_once('repositories/EventRepository.php');
 
 class DeleteEventPage extends AbstractPage {
 
@@ -16,7 +16,11 @@ class DeleteEventPage extends AbstractPage {
         $this->setTitle('Delete event');
 
         if (!EventRepository::doesEventExist($this->eventId)){
-            RoutingService::redirectToErrorPage();
+            RenderingService::render(
+                "ErrorPageTemplate.php",
+                [
+                    'errorMessage' => "Event does not exist."
+                ]);
             return;
         }
 

@@ -1,3 +1,5 @@
+<link href="../styles/myStyle.css" rel="stylesheet" />
+
 <section class="py-5">
    
     <form method="POST">
@@ -14,7 +16,7 @@
                     </div>
                     <div class="col-md-6 align-items-center">
                         <div class="d-flex justify-content-center">
-                            <button name="cancel_button" type="submit" class="btn btn-primary" value="cancel" style="width: 60vh;">Cancel</button>
+                            <a name="cancel_button" type="submit" class="btn btn-primary" value="cancel" style="width: 60vh;" href="<?= $hrefPrefix ?>">Cancel</a>
                         </div>
                     </div>
                 </div>
@@ -24,7 +26,7 @@
                 </div>
                 <div class="row gx-4 gx-lg-5 px-4 p-2 align-items-center">
                     <div class="d-flex justify-content-center">
-                        <a name="home_button" class="btn btn-light" style="width: 50vh;" href="../">Homepage</a>
+                        <a name="home_button" class="btn btn-light" style="width: 50vh;" href="<?= $hrefPrefix ?>">Homepage</a>
                     </div>
                 </div>
             <?php } ?>

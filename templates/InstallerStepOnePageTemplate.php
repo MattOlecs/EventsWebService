@@ -1,3 +1,5 @@
+<link href="../styles/myStyle.css" rel="stylesheet" />
+
 <div class="text-center">
     <h1 style="padding-top:5vh">Instalator :: Krok 1</h2>
     <p><?=$installerMessage?></p>

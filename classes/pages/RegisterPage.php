@@ -1,6 +1,6 @@
 <?php
 
-require_once('../classes/DbConnection.php');
+require_once('classes/DbConnection.php');
 
 class RegisterPage extends AbstractPage
 {

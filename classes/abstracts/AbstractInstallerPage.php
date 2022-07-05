@@ -1,6 +1,6 @@
 <?php
 
-require_once('../services/RenderingService.php');
+require_once('services/RenderingService.php');
 
 abstract class AbstractInstallerPage
 {
