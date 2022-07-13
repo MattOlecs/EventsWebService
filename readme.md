@@ -22,6 +22,10 @@ SERVICE WORKS ON LINUX
 
 * *https://github.com/revky*
 
+
+ :)
+
+ 
 ## External libraries in use
 * bootstrap 5.1.3
 * jquery 3.6.0
