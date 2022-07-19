@@ -18,7 +18,7 @@ SERVICE WORKS ON LINUX
 ## Authors
 * *https://github.com/MattOlecs*
 
-* *https://github.com/MattOlecs*
+* *https://github.com/Smoothie1-ini*
 
 * *https://github.com/revky*
 
